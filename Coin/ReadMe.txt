@@ -11,7 +11,6 @@
  - Customisable command name
  - Customisable permission for using the command
  - Customisable winning and loosing emote
- - Customisable super jackpot emoticon
  - Customisable winning multiplier 
  - Customisable cooldown / user cooldown timers 
  - Customisable response messages
