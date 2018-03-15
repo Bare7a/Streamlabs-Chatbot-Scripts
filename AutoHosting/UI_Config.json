@@ -1,0 +1,139 @@
+﻿{
+    "output_file": "config.json",
+    
+    "offlineOnly": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Offline Only Mode",
+        "tooltip": "True if you want it to only run when you aren't streaming",
+        "group" : "General"
+    },
+    "command": {
+        "type": "textbox",
+        "value": "!hostme",
+        "label": "Command",
+        "tooltip": "Name of the command",
+        "group": "General"
+    },
+    "hostCountdown": {
+        "type": "numberbox",
+        "value": 15,
+        "label": "Switching host in minutes",
+        "tooltip": "Minutes between switching the host",
+        "group": "General"
+    },
+    "permission": {
+        "type": "dropdown",
+        "value": "Everyone",
+        "items": ["Everyone","Regular","Subscriber","Moderator","Editor"],
+        "label": "Permission level",
+        "tooltip": "Set the permission level for the command",
+        "group": "General"
+    },
+    "useBlacklist": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Use Blacklist",
+        "tooltip": "Enable/Disable blacklist that keeps track of everyone who was already hosted",
+        "group": "Blacklist"
+    },
+    "blacklistCooldown": {
+        "type": "numberbox",
+        "label": "Remove user from blacklist after (minutes)",
+        "value": 60,
+        "tooltip": "Minutes after the person who got hosted is removed from the blacklist",
+        "group": "Blacklist"
+    },
+    "useCosts": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Use costs for the command",
+        "tooltip": "Enable/Disable user cost for using the command",
+        "group": "Cost"
+    },
+    "costs": {
+        "type": "numberbox",
+        "value": 10,
+        "label": "Cost to use the command",
+        "tooltip": "Set the default cost for this command.",
+        "group": "Cost"
+    },
+    "responseNotEnoughPoints": {
+        "type": "textbox",
+        "value": "$user you need $cost $currency to use $command. Currently you have only $points $currency.",
+        "label": "Not enough points",
+        "tooltip": "Message that will be posted if the user doesn't have enough points.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of currency\r\n $cost = Cost to play\r\n $command = Name of command",
+        "group": "Cost"
+    },
+    "blacklistResponse": {
+        "type": "textbox",
+        "label": "Blacklist response",
+        "value": "$user, you are still in the blacklist! Wait $cd more minutes before writing $command again!",
+        "tooltip": "Message that the bot will display when a user is inside the blacklist. \r\n $user = Username \r\n $cd = Time remaining \r\n $command = Command name",
+        "group": "Blacklist"
+    },
+    "useCooldown": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use Cooldowns",
+        "tooltip": "Enable/Disable cooldown and user cooldown",
+        "group": "Cooldown"
+    },
+    "useCooldownMessages": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use Cooldown Messages",
+        "tooltip": "Enable/Disable cooldown messages",
+        "group": "Cooldown"
+    },
+    "cooldown": {
+        "type": "numberbox",
+        "label": "Cooldown (seconds)",
+        "value": 1,
+        "tooltip": "Cooldown in seconds.",
+        "group": "Cooldown"
+    },
+    "onCooldown": {
+        "type": "textbox",
+        "value": "$user, $command is still on cooldown for $cd seconds!",
+        "label": "Cooldown Response",
+        "tooltip": "Message that the bot will display when the command is on cooldown. \r\n $user = Username \r\n $cd = Time remaining \r\n $command = Command name",
+        "group": "Cooldown"
+    },
+    "userCooldown": {
+        "type": "numberbox",
+        "label": "User Cooldown (seconds)",
+        "value": 300,
+        "tooltip": "User cooldown in seconds.",
+        "group": "Cooldown"
+    },
+    "onUserCooldown": {
+        "type": "textbox",
+        "value": "$user, $command is still on user cooldown for $cd seconds!",
+        "label": "User Cooldown Response",
+        "tooltip": "Message that the bot will display when the command is on user cooldown. \r\n $user = Username \r\n $cd = Time remaining \r\n $command = Command name",
+        "group": "Cooldown"
+    },
+    "addedResponse": {
+        "type": "textbox",
+        "value": "$user, you have been added to the hosting list! Someone will be hosted in $remaining minutes!",
+        "label": "Added in the list response",
+        "tooltip": "Message sent when the user gets successfully added to the userlist. Use $user to get the username.",
+        "group": "Responses"
+    },
+    "alreadyResponse": {
+        "type": "textbox",
+        "value": "$user, you are already in the hosting list! Someone will be hosted in $remaining minutes!",
+        "label": "Aldready in the list response",
+        "tooltip": "Message sent when the user tries to get in the userlist when he is already there",
+        "group": "Responses"
+    },
+    "openReadMe": {
+        "type": "button",
+        "label": "Open 'Readme Me' file",
+        "tooltip": "Opens the 'Readme.txt' for this script.",
+        "function": "OpenReadMe",
+        "wsevent": "",
+        "group": ""
+    }
+}

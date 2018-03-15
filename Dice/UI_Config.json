@@ -1,0 +1,146 @@
+﻿{
+    "output_file": "config.json",
+
+    "liveOnly": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Live Only Mode",
+        "tooltip": "True if you want it to only run when you are live",
+        "group" : "General"
+    },
+    "command": {
+        "type": "textbox",
+        "value": "!dice",
+        "label": "Command",
+        "tooltip": "Name of the command",
+        "group": "General"
+    },
+    "permission": {
+        "type": "dropdown",
+        "value": "Everyone",
+        "items": ["Everyone","Regular","Subscriber","Moderator","Editor"],
+        "label": "Permission level",
+        "tooltip": "Set the permission level for the command",
+        "group": "General"
+    },
+    "useCustomCosts": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use custom costs",
+        "tooltip": "Enable/Disable user defined cost",
+        "group": "Currency"
+    },
+    "costs": {
+        "type": "numberbox",
+        "value": 1,
+        "label": "Cost to play the game",
+        "tooltip": "Set the default cost for this command.",
+        "group": "Currency"
+    },
+    "reward1": {
+        "type": "numberbox",
+        "value": 2,
+        "label": "Winning multiplier (11-14)",
+        "tooltip": "Set the winning multiplier for getting 11-14",
+        "group": "Currency"
+    },
+    "reward2": {
+        "type": "numberbox",
+        "value": 3,
+        "label": "Winning multiplier (15)",
+        "tooltip": "Set the winning multiplier for getting 15",
+        "group": "Currency"
+    },
+    "reward3": {
+        "type": "numberbox",
+        "value": 4,
+        "label": "Winning multiplier (16)",
+        "tooltip": "Set the winning multiplier for getting 16",
+        "group": "Currency"
+    },
+    "reward4": {
+        "type": "numberbox",
+        "value": 5,
+        "label": "Winning multiplier (17)",
+        "tooltip": "Set the winning multiplier for getting 17",
+        "group": "Currency"
+    },
+    "reward5": {
+        "type": "numberbox",
+        "value": 100,
+        "label": "Winning multiplier (18)",
+        "tooltip": "Set the winning multiplier for getting 18",
+        "group": "Currency"
+    },
+    "useCooldown": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use Cooldown Messages",
+        "tooltip": "Enable/Disable cooldown messages",
+        "group": "Cooldown"
+    },
+    "useCooldownMessages": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use Cooldown Messages",
+        "tooltip": "Enable/Disable cooldown messages",
+        "group": "Cooldown"
+    },
+    "cooldown": {
+        "type": "numberbox",
+        "label": "Cooldown (seconds)",
+        "value": 1,
+        "tooltip": "Cooldown in seconds.",
+        "group": "Cooldown"
+    },
+    "onCooldown": {
+        "type": "textbox",
+        "value": "$user, $command is still on cooldown for $cd seconds!",
+        "label": "Cooldown Response",
+        "tooltip": "The message that the bot will display when the command is on cooldown. \r\n $user = Username \r\n $cd = Time remaining \r\n $command = Command name",
+        "group": "Cooldown"
+    },
+    "userCooldown": {
+        "type": "numberbox",
+        "label": "User Cooldown (seconds)",
+        "value": 120,
+        "tooltip": "User cooldown in seconds.",
+        "group": "Cooldown"
+    },
+    "onUserCooldown": {
+        "type": "textbox",
+        "value": "$user, $command is still on user cooldown for $cd seconds!",
+        "label": "User Cooldown Response",
+        "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n $user = Username \r\n $cd = Time remaining \r\n $command = Command name",
+        "group": "Cooldown"
+    },
+    "responseNotEnoughPoints": {
+        "type": "textbox",
+        "value": "$user you have only $points $currency to roll the dices.",
+        "label": "Not enough points",
+        "tooltip": "Message that will be posted if the user doesn't have enough points.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of currency\r\n $cost = Cost to play",
+        "group": "Response Messages"
+    },
+    "responseWon": {
+        "type": "textbox",
+        "value": "$user rolls the dices $dices and wins $reward $currency",
+        "label": "User wins message",
+        "tooltip": "Message that will be posted if the user wins.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of currency\r\n $reward = Winning reward\r\n $cost = Cost to play \r\n $dices = Three dices \r\n $dicesSum = The sum of the three dices \r\n $dice1 = First dice number \r\n $dice2 = Second dice number \r\n $dice3 = Third dice number",
+        "group": "Response Messages"
+    },
+    "responseLost": {
+        "type": "textbox",
+        "value": "$user rolls the dices $dices and looses $cost $currency",
+        "label": "User looses message",
+        "tooltip": "Message that will be posted if the user loose.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of Currency\r\n $cost = Cost to play \r\n $dices = Three dices \r\n $dicesSum = The sum of the three dices \r\n $dice1 = First dice number \r\n $dice2 = Second dice number \r\n $dice3 = Third dice number",
+        "group": "Response Messages"
+    },
+    "openReadMe": {
+        "type": "button",
+        "label": "Open 'Readme Me' file",
+        "tooltip": "Opens the 'Readme.txt' for this script.",
+        "function": "OpenReadMe",
+        "wsevent": "",
+        "group": ""
+    }
+}

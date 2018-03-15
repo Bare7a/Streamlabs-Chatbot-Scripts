@@ -1,0 +1,175 @@
+﻿{
+    "output_file": "config.json",
+
+    "liveOnly": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Live Only Mode",
+        "tooltip": "True if you want it to only run when you are live",
+        "group" : "General"
+    },
+    "command": {
+        "type": "textbox",
+        "value": "!slots",
+        "label": "Command",
+        "tooltip": "Name of the Command",
+        "group": "General"
+    },
+    "permission": {
+        "type": "dropdown",
+        "value": "Everyone",
+        "items": ["Everyone","Regular","Subscriber","Moderator","Editor"],
+        "label": "Permission level",
+        "tooltip": "Set the permission level for the command",
+        "group": "General"
+    },
+    "emoteList": {
+        "type": "textbox",
+        "value": "HSWP, TwitchRPG, MorphinTime, duDudu, HumbleLife, PJSalt",
+        "label": "List of used Emotes",
+        "tooltip": "List of the Emotes you want to use. Seperate them per Comma. More Emotes = Less Chance",
+        "group": "General"
+    },
+    "superEmote": {
+        "type": "textbox",
+        "value": "CurseLit",
+        "label": "Set the Super Jackpot Emote",
+        "tooltip": "Emote that triggers the Super Jackpot when 3 of them.",
+        "group": "General"
+    },
+    "useCustomCosts": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use custom costs",
+        "tooltip": "Enable/Disable custom costs",
+        "group": "Currency"
+    },
+    "costs": {
+        "type": "numberbox",
+        "value": 1,
+        "label": "Cost to play the game",
+        "tooltip": "Set the cost for this command.",
+        "group": "Currency"
+    },
+    "rewardTwoSeperated": {
+        "type": "numberbox",
+        "value": 2,
+        "label": "Reward multiplier - Two Emotes (Seperated)",
+        "tooltip": "Reward for the Win - Two same Emotes seperated from each other",
+        "group": "Currency"
+    },
+    "rewardTwoSame": {
+        "type": "numberbox",
+        "value": 4,
+        "label": "Reward multiplier - Two Emotes",
+        "tooltip": "Reward for the Win - Two same Emotes next to each other",
+        "group": "Currency"
+    },
+    "rewardJackpot": {
+        "type": "numberbox",
+        "value": 25,
+        "label": "Reward multiplier - Three Emotes",
+        "tooltip": "Reward for the Win - Jackpot (3 same)",
+        "group": "Currency"
+    },
+    "rewardSuperJackpot": {
+        "type": "numberbox",
+        "value": 75,
+        "label": "Reward multiplier - Three Superjackpot Emotes",
+        "tooltip": "Reward for the Win - 3 SuperJackpot Emotes",
+        "group": "Currency"
+    },
+    "useCooldown": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use Cooldown",
+        "tooltip": "Enable/Disable cooldown and user cooldown",
+        "group": "Cooldown"
+    },
+    "useCooldownMessages": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use Cooldown Messages",
+        "tooltip": "Enable/Disable cooldown messages",
+        "group": "Cooldown"
+    },
+    "cooldown": {
+        "type": "numberbox",
+        "label": "Cooldown (seconds)",
+        "value": 1,
+        "tooltip": "Cooldown in seconds.",
+        "group": "Cooldown"
+    },
+    "onCooldown": {
+        "type": "textbox",
+        "value": "$user, $command is still on cooldown for $cd seconds!",
+        "label": "Cooldown Response",
+        "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+        "group": "Cooldown"
+    },
+    "userCooldown": {
+        "type": "numberbox",
+        "label": "User Cooldown (seconds)",
+        "value": 300,
+        "tooltip": "User cooldown in seconds.",
+        "group": "Cooldown"
+    },
+    "onUserCooldown": {
+        "type": "textbox",
+        "value": "$user, $command is still on user cooldown for $cd seconds!",
+        "label": "User Cooldown Response",
+        "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
+        "group": "Cooldown"
+    },
+
+    "responseNotEnoughPoints": {
+        "type": "textbox",
+        "value": "$user you have only $points $currency to pull the lever.",
+        "label": "Not enough points",
+        "tooltip": "Message that will be posted if the user loses.\r\n $slots = 3 Rolled Emotes\r\n $user = Username\r\n $reward = Points he earned\r\n $currency = Name of Currency\r\n $cost = Cost to play",
+        "group": "Response Messages"
+    },
+    "responseLost": {
+        "type": "textbox",
+        "value": "$user pulls the lever [$slots] and looses $cost $currency LUL",
+        "label": "No Combination - Lost",
+        "tooltip": "Message that will be posted if the user loses.\r\n $slots = 3 Rolled Emotes\r\n $user = Username\r\n $reward = Points he earned\r\n $currency = Name of Currency\r\n $cost = Cost to play",
+        "group": "Response Messages"
+    },
+    "responseWonSmall": {
+        "type": "textbox",
+        "value": "$user pulls the lever [ $slots ] and wins (x$multiplier) $reward $currency! PogChamp",
+        "label": "Combination - Two Emotes (seperated)",
+        "tooltip": "Message that will be posted with 2 Emotes but seperated (e.g.: X O X).\r\n $slots = 3 Rolled Emotes\r\n $user = Username\r\n $reward = Points he earned\r\n $multiplier = Multiplier number\r\n $currency = Name of Currency\r\n $cost = Cost to play",
+        "group": "Response Messages"
+    },
+    "responseWon": {
+        "type": "textbox",
+        "value": "$user pulls the lever [$slots] and wins (x$multiplier) $reward $currency! Kreygasm",
+        "label": "Combination - Two Emotes",
+        "tooltip": "Message that will be posted with 2 Emotes together (e.g.: X X O).\r\n $slots = 3 Rolled Emotes\r\n $user = Username\r\n $reward = Points he earned\r\n $multiplier = Multiplier number\r\n $currency = Name of Currency\r\n $cost = Cost to play",
+        "group": "Response Messages"
+    },
+    "responseJackpot": {
+        "type": "textbox",
+        "value": "$user pulls the lever [$slots] Jackpot (x$multiplier) $reward $currency! Kappa",
+        "label": "Combination - Three Emotes",
+        "tooltip": "Message that will be posted when he has 3 same Emotes.\r\n $slots = 3 Rolled Emotes\r\n $user = Username\r\n $reward = Points he earned\r\n $multiplier = Multiplier number\r\n $currency = Name of Currency\r\n $cost = Cost to play",
+        "group": "Response Messages"
+    },
+    "responseSuperJackpot": {
+        "type": "textbox",
+        "value": "$user pulls the lever [$slots] SUPER JACKPOT (x$multiplier) $reward $currency! KappaPride",
+        "label": "Combination - Three Superjackpot Emotes",
+        "tooltip": "Message that will be posted when he has 3 super Emotes.\r\n $slots = 3 Rolled Emotes\r\n $user = Username\r\n $reward = Points he earned\r\n $multiplier = Multiplier number\r\n $currency = Name of Currency\r\n $cost = Cost to play",
+        "group": "Response Messages"
+    },
+    "openReadMe": {
+        "type": "button",
+        "label": "Open 'Readme Me' file",
+        "tooltip": "Opens the 'Readme.txt' for this script.",
+        "function": "OpenReadMe",
+        "wsevent": "",
+        "group": ""
+    }
+}
