@@ -1,42 +1,50 @@
 # Streamlabs-Chatbot-Scripts
 
  ## Auto Hosting
-  - Allow/Disallow using the command when the stream is online
-  - Allow/Disallow using a blacklist
+  - Enable/Disable using the command when the stream is online
+  - Enable/Disable using a blacklist
+  - Enable/Disable command cost
   - Enable/Disable cooldown / user cooldown
   - Enable/Disable cooldown / user cooldown messages
-  - Enable/Disable command cost
-  - Customisable cost for using the command
   - Customisable command name
+  - Customisable permission for using the command
+  - Customisable cost for using the command
+  - Customisable cooldown / user cooldown timers 
   - Customisable response messages	
 
  ## Coin Minigame 
-  - Allow/Disallow using the command when the stream is offline
-  - Allow/Disallow using custom betting ammounts
+  - Enable/Disable using the command when the stream is offline
+  - Enable/Disable using custom betting ammounts
   - Enable/Disable cooldown / user cooldown
   - Enable/Disable cooldown / user cooldown messages
+  - Customisable command name
+  - Customisable permission for using the command
   - Customisable winning and loosing emote
   - Customisable super jackpot emoticon
   - Customisable winning multiplier 
-  - Customisable command name
+  - Customisable cooldown / user cooldown timers 
   - Customisable response messages
 
 ## Dice Minigame
-  - Allow/Disallow using the command when the stream is offline
-  - Allow/Disallow using custom betting ammounts
+  - Enable/Disable using the command when the stream is offline
+  - Enable/Disable using custom betting ammounts
   - Enable/Disable cooldown / user cooldown
   - Enable/Disable cooldown / user cooldown messages
-  - Customisable winning multipliers
   - Customisable command name
+  - Customisable permission for using the command
+  - Customisable winning multipliers
+  - Customisable cooldown / user cooldown timers 
   - Customisable response messages
 
 ## Slots Minigame
-  - Allow/Disallow using the command when the stream is offline
-  - Allow/Disallow using custom betting ammounts
+  - Enable/Disable using the command when the stream is offline
+  - Enable/Disable using custom betting ammounts
   - Enable/Disable cooldown / user cooldown
   - Enable/Disable cooldown / user cooldown messages
+  - Customisable command name
+  - Customisable permission for using the command
   - Customisable emoticons
   - Customisable super jackpot emoticon
   - Customisable winning multipliers
-  - Customisable command name
+  - Customisable cooldown / user cooldown timers 
   - Customisable response messages
