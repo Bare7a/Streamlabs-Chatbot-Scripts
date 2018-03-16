@@ -20,7 +20,7 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global responses, settings, configFile
+	global settings, configFile
 
 	path = os.path.dirname(__file__)
 	try:
@@ -46,7 +46,7 @@ def Init():
 			"onUserCooldown": "$user, $command is still on user cooldown for $cd seconds!",
 			"responseNotEnoughPoints": "$user you have only $points $currency to roll the dices.",
 			"responseWon": "$user rolls the dices $dices and wins $reward $currency",
-			"responseLost": "$user rolls the dices $dices and looses $reward $currency"
+			"responseLost": "$user rolls the dices $dices and looses $cost $currency"
 		}
 
 def Execute(data):

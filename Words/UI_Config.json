@@ -1,0 +1,68 @@
+﻿{
+    "output_file": "config.json",
+
+    "liveOnly": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Live Only Mode",
+        "tooltip": "True if you want it to only run when you are live",
+        "group" : "General"
+    },
+    "permission": {
+        "type": "dropdown",
+        "value": "Everyone",
+        "items": ["Everyone","Regular","Subscriber","Moderator","Editor"],
+        "label": "Permission level",
+        "tooltip": "Set the permission level for participating",
+        "group" : "General"
+    },
+    "minReward": {
+        "type": "numberbox",
+        "value": 1,
+        "label": "Min reward",
+        "tooltip": "Minimum ammount the user wins for writing the word first",
+        "group" : "General"
+    },
+    "maxReward": {
+        "type": "numberbox",
+        "value": 10,
+        "label": "Max reward",
+        "tooltip": "Maximum ammount the user wins for writing the word first",
+        "group" : "General"
+    },
+    "wordInterval": {
+        "type": "numberbox",
+        "value": 10,
+        "label": "Interval in minutes",
+        "tooltip": "Interval in minutes before switching the word",
+        "group" : "General"
+    },
+    "wordsList": {
+        "type": "textbox",
+        "value": "Aatrox, Ahri, Akali, Alistar, Amumu, Anivia, Annie, Ashe, Aurelion Sol, Azir, Bard, Blitzcrank, Brand, Braum, Caitlyn, Camille, Cassiopeia, Cho'Gath, Corki, Darius, Diana, Dr. Mundo, Draven, Ekko, Elise, Evelynn, Ezreal, Fiddlesticks, Fiora, Fizz, Galio, Gangplank, Garen, Gnar, Gragas, Graves, Hecarim, Heimerdinger, Illaoi, Irelia, Ivern, Janna, Jarvan IV, Jax, Jayce, Jhin, Jinx, Kai'Sa, Kalista, Karma, Karthus, Kassadin, Katarina, Kayle, Kayn, Kennen, Kha'Zix, Kindred, Kled, Kog'Maw, LeBlanc, Lee Sin, Leona, Lissandra, Lucian, Lulu, Lux, Malphite, Malzahar, Maokai, Master Yi, Miss Fortune, Mordekaiser, Morgana, Nami, Nasus, Nautilus, Nidalee, Nocturne, Nunu, Olaf, Orianna, Ornn, Pantheon, Poppy, Quinn, Rakan, Rammus, Rek'Sai, Renekton, Rengar, Riven, Rumble, Ryze, Sejuani, Shaco, Shen, Shyvana, Singed, Sion, Sivir, Skarner, Sona, Soraka, Swain, Syndra, Tahm, Kench, Taliyah, Talon, Taric, Teemo, Thresh, Tristana, Trundle, Tryndamere, Twisted, Fate, Twitch, Udyr, Urgot, Varus, Vayne, Veigar, Vel'Koz, Vi, Viktor, Vladimir, Volibear, Warwick, Wukong, Xayah, Xerath, Xin Zhao, Yasuo, Yorick, Zac, Zed, Ziggs, Zilean, Zoe, Zyra",
+        "label": "Words list",
+        "tooltip": "The words that will be used seperated by comma",
+        "group" : "General"
+    },
+    "responseAnnouncement": {
+        "type": "textbox",
+        "value": "Whoever writes $word first gets free $currency!",
+        "label": "Word announcement message",
+        "tooltip": "Message that will be posted when a new word is announced\r\n $word = The word\r\n $currency = Name of Currency",
+        "group" : "Response Messages"
+    },
+    "responseWon": {
+        "type": "textbox",
+        "value": "$user wrote $word first and won $reward $currency!",
+        "label": "User wins message",
+        "tooltip": "Message that will be posted when the user writes the word first\r\n $word = The word\r\n $user = Username\r\n $reward = Winning reward\r\n $currency = Name of Currency",
+        "group" : "Response Messages"
+    },
+    "openReadMe": {
+        "type": "button",
+        "label": "Open 'Readme Me' file",
+        "tooltip": "Opens the 'Readme.txt' for this script.",
+        "function": "OpenReadMe",
+        "wsevent": "",
+    }
+}

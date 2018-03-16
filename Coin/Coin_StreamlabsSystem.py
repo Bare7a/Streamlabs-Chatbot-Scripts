@@ -18,7 +18,7 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global responses, settings, configFile
+	global settings, configFile
 
 	path = os.path.dirname(__file__)
 	try:

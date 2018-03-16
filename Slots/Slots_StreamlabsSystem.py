@@ -20,7 +20,7 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global responses, settings, configFile, emotes
+	global settings, configFile, emotes
 
 	path = os.path.dirname(__file__)
 	try:

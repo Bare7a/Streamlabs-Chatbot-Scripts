@@ -24,7 +24,7 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global responses, settings, configFile, resetTime, delayTime, delay
+	global settings, configFile, resetTime, delayTime, delay
 
 	path = os.path.dirname(__file__)
 	try:

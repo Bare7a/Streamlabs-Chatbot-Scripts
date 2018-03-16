@@ -1,6 +1,6 @@
 # Streamlabs-Chatbot-Scripts
 
- ## Auto Hosting
+## Auto Hosting
   - Enable/Disable using the command when the stream is online
   - Enable/Disable using a blacklist
   - Enable/Disable command cost
@@ -12,7 +12,7 @@
   - Customisable cooldown / user cooldown timers 
   - Customisable response messages	
 
- ## Coin Minigame 
+## Coin Minigame 
   - Enable/Disable using the command when the stream is offline
   - Enable/Disable using custom betting ammounts
   - Enable/Disable cooldown / user cooldown
@@ -47,3 +47,10 @@
   - Customisable winning multipliers
   - Customisable cooldown / user cooldown timers 
   - Customisable response messages
+
+## Words Minigame
+ - Enable/Disable using the command when the stream is offline
+ - Customisable words list
+ - Customisable permission for using the command
+ - Customisable winning rewards (min-max)
+ - Customisable response messages
