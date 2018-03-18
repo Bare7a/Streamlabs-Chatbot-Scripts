@@ -13,17 +13,20 @@ Creator = "Bare7a"
 Version = "1.2.0"
 
 configFile = "config.json"
+wordsFile = "words.txt"
 settings = {}
 
-resetTime = 0
 wordsList = []
 currentWord = ""
+
+resetTime = 0
+reward = 0
 
 def ScriptToggled(state):
 	return
 
 def Init():
-	global settings, configFile, resetTime, wordsList, currentWord
+	global settings, configFile, wordsFile, resetTime, wordsList
 
 	path = os.path.dirname(__file__)
 	try:
@@ -33,38 +36,37 @@ def Init():
 		settings = {
 			"liveOnly": True,
 			"permission": "Everyone",
+			"ignoreCaseSensitivity": True,  
 			"minReward": 1,
 			"maxReward": 10,
-			"wordInterval": 10,
-			"wordsList": "Aatrox, Ahri, Akali, Alistar, Amumu, Anivia, Annie, Ashe, Aurelion Sol, Azir, Bard, Blitzcrank, Brand, Braum, Caitlyn, Camille, Cassiopeia, Cho'Gath, Corki, Darius, Diana, Dr. Mundo, Draven, Ekko, Elise, Evelynn, Ezreal, Fiddlesticks, Fiora, Fizz, Galio, Gangplank, Garen, Gnar, Gragas, Graves, Hecarim, Heimerdinger, Illaoi, Irelia, Ivern, Janna, Jarvan IV, Jax, Jayce, Jhin, Jinx, Kai'Sa, Kalista, Karma, Karthus, Kassadin, Katarina, Kayle, Kayn, Kennen, Kha'Zix, Kindred, Kled, Kog'Maw, LeBlanc, Lee Sin, Leona, Lissandra, Lucian, Lulu, Lux, Malphite, Malzahar, Maokai, Master Yi, Miss Fortune, Mordekaiser, Morgana, Nami, Nasus, Nautilus, Nidalee, Nocturne, Nunu, Olaf, Orianna, Ornn, Pantheon, Poppy, Quinn, Rakan, Rammus, Rek'Sai, Renekton, Rengar, Riven, Rumble, Ryze, Sejuani, Shaco, Shen, Shyvana, Singed, Sion, Sivir, Skarner, Sona, Soraka, Swain, Syndra, Tahm, Kench, Taliyah, Talon, Taric, Teemo, Thresh, Tristana, Trundle, Tryndamere, Twisted, Fate, Twitch, Udyr, Urgot, Varus, Vayne, Veigar, Vel'Koz, Vi, Viktor, Vladimir, Volibear, Warwick, Wukong, Xayah, Xerath, Xin Zhao, Yasuo, Yorick, Zac, Zed, Ziggs, Zilean, Zoe, Zyra",
-			"responseAnnouncement": "Whoever writes $word first gets free $currency!",
-			"responseWon": "$user wrote $word first and won $reward $currency!"
+			"wordInterval": 10,			
+			"responseAnnouncement": "Whoever writes $word first gets $reward $currency!",
+			"wonResponse": "$user wrote $word first and won $reward $currency!"
 		}
-	
-	tempList = settings["wordsList"].split(",")
-	
-	for word in tempList:
-		wordsList.append(word.strip())
 
-	currentWord = wordsList[Parent.GetRandom(0, len(wordsList))]
-	resetTime = time.time() + (settings["wordInterval"] * 60)
+	try: 
+		with codecs.open(os.path.join(path, wordsFile),encoding="utf-8", mode="r") as file:
+			wordsList = file.read().splitlines()
+	except:
+		wordsList = ["red", "green", "blue", "orange", "brown", "black", "white"]
+	
+	resetTime = time.time()
 	return
 
 def Execute(data):
-	global settings, resetTime, currentWord
+	global settings, resetTime, currentWord, reward
 
-	if data.IsChatMessage() and (data.Message == currentWord) and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
+	if data.IsChatMessage() and ((data.Message == currentWord) or (settings["ignoreCaseSensitivity"] and (data.Message.lower() == currentWord.lower()))) and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
 		userId = data.User			
 		username = data.UserName
 
-		reward = Parent.GetRandom(settings["minReward"], settings["maxReward"])
 		Parent.AddPoints(userId, username, reward)
 
 		outputMessage = settings["responseWon"]	
 
-		outputMessage = outputMessage.replace("$reward", str(reward))
-		outputMessage = outputMessage.replace("$user", username)
 		outputMessage = outputMessage.replace("$word", currentWord)
+		outputMessage = outputMessage.replace("$user", username)
+		outputMessage = outputMessage.replace("$reward", str(reward))
 		outputMessage = outputMessage.replace("$currency", Parent.GetCurrencyName())
 
 		currentWord = ""
@@ -81,19 +83,28 @@ def OpenReadMe():
     os.startfile(location)
     return
 
+def OpenWordsFile():
+	location = os.path.join(os.path.dirname(__file__), wordsFile)
+	os.startfile(location)
+	return
+
+
 def Tick():
-	global settings, resetTime, wordsList, currentWord
+	global settings, resetTime, wordsList, currentWord, reward
 
-	currentTime = time.time()
+	if (settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"]):
+		currentTime = time.time()
 
-	if(currentTime >= resetTime):
-		resetTime = currentTime + (settings["wordInterval"] * 60)
-		outputMessage = settings["responseAnnouncement"]
+		if(currentTime >= resetTime):
+			resetTime = currentTime + (settings["wordInterval"] * 60)
+			outputMessage = settings["responseAnnouncement"]
 
-		currentWord = wordsList[Parent.GetRandom(0, len(wordsList))] 
+			reward = Parent.GetRandom(settings["minReward"], settings["maxReward"])
+			currentWord = wordsList[Parent.GetRandom(0, len(wordsList))] 
 
-		outputMessage = outputMessage.replace("$word", currentWord)
-		outputMessage = outputMessage.replace("$currency", Parent.GetCurrencyName())
+			outputMessage = outputMessage.replace("$word", currentWord)
+			outputMessage = outputMessage.replace("$reward", str(reward))
+			outputMessage = outputMessage.replace("$currency", Parent.GetCurrencyName())
 
-		Parent.SendStreamMessage(outputMessage)
+			Parent.SendStreamMessage(outputMessage)
 	return

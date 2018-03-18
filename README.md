@@ -1,6 +1,6 @@
 # Streamlabs-Chatbot-Scripts
 
-## Auto Hosting
+## [Auto Hosting](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/AutoHosting)
   - Enable/Disable using the command when the stream is online
   - Enable/Disable using a blacklist
   - Enable/Disable command cost
@@ -12,7 +12,7 @@
   - Customisable cooldown / user cooldown timers 
   - Customisable response messages	
 
-## Coin Minigame 
+## [Coin Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Coin) 
   - Enable/Disable using the command when the stream is offline
   - Enable/Disable using custom betting ammounts
   - Enable/Disable cooldown / user cooldown
@@ -24,7 +24,7 @@
   - Customisable cooldown / user cooldown timers 
   - Customisable response messages
 
-## Dice Minigame
+## [Dice Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Dice)
   - Enable/Disable using the command when the stream is offline
   - Enable/Disable using custom betting ammounts
   - Enable/Disable cooldown / user cooldown
@@ -35,7 +35,7 @@
   - Customisable cooldown / user cooldown timers 
   - Customisable response messages
 
-## Slots Minigame
+## [Slots Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Slots)
   - Enable/Disable using the command when the stream is offline
   - Enable/Disable using custom betting ammounts
   - Enable/Disable cooldown / user cooldown
@@ -48,9 +48,20 @@
   - Customisable cooldown / user cooldown timers 
   - Customisable response messages
 
-## Words Minigame
- - Enable/Disable using the command when the stream is offline
+## [Trivia Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Trivia)
+  - Enable/Disable the minigame when the stream is offline
+  - Enable/Disable case sensitivity for the given answer
+  - Customisable questions/answers list
+  - Customisable permission for participating
+  - Customisable winning rewards (min-max)
+  - Customisable timers for switching the questions
+  - Customisable response messages 
+
+## [Words Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Words)
+ - Enable/Disable the minigame when the stream is offline
+ - Enable/Disable case sensitivity for the word
  - Customisable words list
- - Customisable permission for using the command
+ - Customisable permission for participating
  - Customisable winning rewards (min-max)
+ - Customisable timers for switching the words
  - Customisable response messages

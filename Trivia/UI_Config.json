@@ -23,11 +23,11 @@
         "tooltip": "True if you want the word case sensitivity to be ignored when giving an answer",
         "group" : "General"
     },
-    "OpenWordsFile": {
+    "OpenQuestionsFile": {
         "type": "button",
-        "label": "Open Words File",
-        "tooltip": "Opens 'words.txt' that contains all words seperated by new line.",
-        "function": "OpenWordsFile",
+        "label": "Open Questions File",
+        "tooltip": "Opens 'questions.txt' that contains all questions and answers seperated by new line.",
+        "function": "OpenQuestionsFile",
         "wsevent": "",
         "group" : "General"
     },
@@ -35,35 +35,35 @@
         "type": "numberbox",
         "value": 1,
         "label": "Min reward",
-        "tooltip": "Minimum ammount the user wins for writing the word first",
+        "tooltip": "Minimum ammount the user wins for writing the correct answer first",
         "group" : "General"
     },
     "maxReward": {
         "type": "numberbox",
         "value": 10,
         "label": "Max reward",
-        "tooltip": "Maximum ammount the user wins for writing the word first",
+        "tooltip": "Maximum ammount the user wins for writing the correct answer first",
         "group" : "General"
     },
-    "wordInterval": {
+    "questionInterval": {
         "type": "numberbox",
         "value": 10,
         "label": "Interval in minutes",
-        "tooltip": "Interval in minutes before switching the word",
+        "tooltip": "Interval in minutes before switching the question",
         "group" : "General"
     },
     "responseAnnouncement": {
         "type": "textbox",
-        "value": "Whoever writes $word first gets $reward $currency!",
+        "value": "Win $reward $currency by answering: $question",
         "label": "Word announcement message",
-        "tooltip": "Message that will be posted when a new word is announced\r\n $word = The word\r\n $user = Username\r\n $reward = Winning reward\r\n $currency = Name of Currency",
+        "tooltip": "Message that will be posted when a new question is announced\r\n $question = The question\r\n $answer = The answer\r\n $reward = Reward\r\n $currency = Name of Currency",
         "group" : "Response Messages"
     },
     "responseWon": {
         "type": "textbox",
-        "value": "$user wrote $word first and won $reward $currency!",
+        "value": "$user answered the question first - $answer and won $reward $currency!",
         "label": "User wins message",
-        "tooltip": "Message that will be posted when the user writes the word first\r\n $word = The word\r\n $user = Username\r\n $reward = Winning reward\r\n $currency = Name of Currency",
+        "tooltip": "Message that will be posted when the user writes the answer first\r\n $answer = The answer\r\n $question = The question\r\n $user = Username\r\n $reward = Winning reward\r\n $currency = Name of Currency",
         "group" : "Response Messages"
     },
     "openReadMe": {
