@@ -48,6 +48,17 @@
   - Customisable cooldown / user cooldown timers 
   - Customisable response messages
 
+## [Sound Player](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/SoundPlayer)
+  - Enable/Disable using the command when the stream is offline
+  - Enable/Disable cooldown / user cooldown
+  - Enable/Disable cooldown / user cooldown messages
+  - Customisable command name
+  - Customisable permission for using the command
+  - Customisable cost
+  - Customisable volume power
+  - Customisable cooldown / user cooldown timers 
+  - Customisable response messages
+
 ## [Trivia Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Trivia)
   - Enable/Disable the minigame when the stream is offline
   - Enable/Disable case sensitivity for the given answer

@@ -1,0 +1,104 @@
+﻿{
+    "output_file": "config.json",
+
+    "liveOnly": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Live Only Mode",
+        "tooltip": "True if you want it to only run when you are live",
+        "group" : "General"
+    },
+    "command": {
+        "type": "textbox",
+        "value": "!play",
+        "label": "Command",
+        "tooltip": "Name of the Command",
+        "group": "General"
+    },
+    "permission": {
+        "type": "dropdown",
+        "value": "Everyone",
+        "items": ["Everyone","Regular","Subscriber","Moderator","Editor"],
+        "label": "Permission level",
+        "tooltip": "Set the permission level for the command",
+        "group": "General"
+    },
+    "volume": {
+        "type": "numberbox",
+        "value": 50,
+        "label": "Volume",
+        "tooltip": "Set the volume power for the playing sounds.",
+        "group": "General"
+    },
+    "costs": {
+        "type": "numberbox",
+        "value": 100,
+        "label": "Cost to play a sound",
+        "tooltip": "Set the cost for this command.",
+        "group": "General"
+    },
+    "useCooldown": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use Cooldown",
+        "tooltip": "Enable/Disable cooldown and user cooldown",
+        "group": "Cooldown"
+    },
+    "useCooldownMessages": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use Cooldown Messages",
+        "tooltip": "Enable/Disable cooldown messages",
+        "group": "Cooldown"
+    },
+    "cooldown": {
+        "type": "numberbox",
+        "label": "Cooldown (seconds)",
+        "value": 1,
+        "tooltip": "Cooldown in seconds.",
+        "group": "Cooldown"
+    },
+    "onCooldown": {
+        "type": "textbox",
+        "value": "$user, $command is still on cooldown for $cd seconds!",
+        "label": "Cooldown Response",
+        "tooltip": "The message that the bot will display when the command is on cooldown. \r\n $user = Username\r\n $cd = time remaining",
+        "group": "Cooldown"
+    },
+    "userCooldown": {
+        "type": "numberbox",
+        "label": "User Cooldown (seconds)",
+        "value": 300,
+        "tooltip": "User cooldown in seconds.",
+        "group": "Cooldown"
+    },
+    "onUserCooldown": {
+        "type": "textbox",
+        "value": "$user, $command is still on user cooldown for $cd seconds!",
+        "label": "User Cooldown Response",
+        "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n $user = Username\r\n $cd = time remaining",
+        "group": "Cooldown"
+    },
+    "responseNotEnoughPoints": {
+        "type": "textbox",
+        "value": "$user you have only $points $currency to pull the lever.",
+        "label": "Not enough points",
+        "tooltip": "Message that will be posted if the user doesn't have enough points.\r\n $user = Username\r\n $currency = Name of Currency\r\n $cost = Cost to play sound \r\n $sound = Sound name",
+        "group": "Response Messages"
+    },
+    "responseWrongSound": {
+        "type": "textbox",
+        "value": "$user the sound you've tried to play doesn't exist.",
+        "label": "Sound doesn't exist",
+        "tooltip": "Message that will be posted if the user tries to play a sound that doesn't exist.\r\n $user = Username\r\n $currency = Name of Currency\r\n $cost = Cost to play sound \r\n $sound = Sound name",
+        "group": "Response Messages"
+    },
+    "openReadMe": {
+        "type": "button",
+        "label": "Open 'Readme Me' file",
+        "tooltip": "Opens the 'Readme.txt' for this script.",
+        "function": "OpenReadMe",
+        "wsevent": "",
+        "group": ""
+    }
+}

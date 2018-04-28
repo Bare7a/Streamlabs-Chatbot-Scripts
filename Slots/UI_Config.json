@@ -104,7 +104,7 @@
         "type": "textbox",
         "value": "$user, $command is still on cooldown for $cd seconds!",
         "label": "Cooldown Response",
-        "tooltip": "The message that the bot will display when the command is on cooldown. \r\n {0} = user \r\n {1} = time remaining",
+        "tooltip": "The message that the bot will display when the command is on cooldown. \r\n $user = Username \r\n $cd = Time remaining",
         "group": "Cooldown"
     },
     "userCooldown": {
@@ -118,7 +118,7 @@
         "type": "textbox",
         "value": "$user, $command is still on user cooldown for $cd seconds!",
         "label": "User Cooldown Response",
-        "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n {0} = user \r\n {1} = time remaining",
+        "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n $user = Username \r\n $cd = Time remaining",
         "group": "Cooldown"
     },
 
