@@ -11,8 +11,8 @@
     "command": {
         "type": "textbox",
         "value": "!play",
-        "label": "Command",
-        "tooltip": "Name of the Command",
+        "label": "Play command",
+        "tooltip": "Name of the Command for playing sounds",
         "group": "General"
     },
     "permission": {
@@ -79,18 +79,25 @@
         "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n $user = Username\r\n $cd = time remaining",
         "group": "Cooldown"
     },
+    "responsePlaylist": {
+        "type": "textbox",
+        "value": "Available sounds: $playlist",
+        "label": "Playlist",
+        "tooltip": "Message that shows all available sounds.\r\n $user = Username\r\n $currency = Name of Currency\r\n $cost = Cost to play sound \r\n $playlist = Playlist",
+        "group": "Response Messages"
+    },
     "responseNotEnoughPoints": {
         "type": "textbox",
         "value": "$user you have only $points $currency to pull the lever.",
         "label": "Not enough points",
-        "tooltip": "Message that will be posted if the user doesn't have enough points.\r\n $user = Username\r\n $currency = Name of Currency\r\n $cost = Cost to play sound \r\n $sound = Sound name",
+        "tooltip": "Message that will be posted if the user doesn't have enough points.\r\n $user = Username\r\n $currency = Name of Currency\r\n $cost = Cost to play sound \r\n $sound = Sound name \r\n $playlist = Playlist",
         "group": "Response Messages"
     },
     "responseWrongSound": {
         "type": "textbox",
-        "value": "$user the sound you've tried to play doesn't exist.",
+        "value": "$user the sound you've tried to play doesn't exist. Available sounds: $playlist",
         "label": "Sound doesn't exist",
-        "tooltip": "Message that will be posted if the user tries to play a sound that doesn't exist.\r\n $user = Username\r\n $currency = Name of Currency\r\n $cost = Cost to play sound \r\n $sound = Sound name",
+        "tooltip": "Message that will be posted if the user tries to play a sound that doesn't exist.\r\n $user = Username\r\n $currency = Name of Currency\r\n $cost = Cost to play sound \r\n $sound = Sound name \r\n $playlist = Playlist",
         "group": "Response Messages"
     },
     "openReadMe": {

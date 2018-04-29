@@ -15,12 +15,13 @@ configFile = "config.json"
 settings = {}
 soundspath = ""
 sounds = {}
+playlist = ""
 
 def ScriptToggled(state):
 	return
 
 def Init():
-	global settings, configFile, sounds, soundspath
+	global sounds, playlist, soundspath, settings, configFile
 
 	path = os.path.dirname(__file__)
 	soundspath = path + "\sounds"
@@ -37,10 +38,11 @@ def Init():
 			"costs": 100,
 			"useCooldown": True,
 			"useCooldownMessages": True,
-			"cooldown": 1,
+			"cooldown": 600,
 			"onCooldown": "$user, $command is still on cooldown for $cd seconds!",
-			"userCooldown": 300,
+			"userCooldown": 1800,
 			"onUserCooldown": "$user, $command is still on user cooldown for $cd seconds!",
+			"responsePlaylist" : "Available sounds: $playlist",
 			"responseNotEnoughPoints": "$user you have only $points $currency to pull the lever.",
 			"responseWrongSound" : "$user the sound you've tried to play doesn't exist."
 		}
@@ -51,10 +53,28 @@ def Init():
 		soundFile = sound.rsplit('.', 1) 
 		sounds[soundFile[0].lower()] = soundFile[1].lower() 
 
+	playlist = ', '.join(sounds.keys())
+
 	return
 
 def Execute(data):
-	global sounds, settings, ScriptName
+	global sounds, playlist, soundspath, settings, ScriptName
+
+	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and data.GetParamCount() == 1 and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
+		userId = data.User			
+		username = data.UserName
+		points = Parent.GetPoints(userId)
+		costs = settings["costs"]
+		
+		outputMessage = settings["responsePlaylist"]
+		outputMessage = outputMessage.replace("$cost", str(costs))
+		outputMessage = outputMessage.replace("$user", username)
+		outputMessage = outputMessage.replace("$points", str(points))
+		outputMessage = outputMessage.replace("$currency", Parent.GetCurrencyName())
+		outputMessage = outputMessage.replace("$command", settings["command"])
+		outputMessage = outputMessage.replace("$playlist", playlist)
+
+		Parent.SendStreamMessage(outputMessage)
 
 	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and data.GetParamCount() == 2 and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
 		outputMessage = ""
@@ -98,6 +118,7 @@ def Execute(data):
 		outputMessage = outputMessage.replace("$points", str(points))
 		outputMessage = outputMessage.replace("$currency", Parent.GetCurrencyName())
 		outputMessage = outputMessage.replace("$command", settings["command"])
+		outputMessage = outputMessage.replace("$playlist", playlist)
 
 		Parent.SendStreamMessage(outputMessage)
 	return
