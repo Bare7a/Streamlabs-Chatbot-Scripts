@@ -1,6 +1,6 @@
 ===============================================================================
  Name: 		Dice Minigame for Streamlabs Bot
- Version: 	1.2.2
+ Version: 	1.2.4
  Creator: 	Bare7a
  Website:	https://github.com/Bare7a/Streamlabs-Chatbot-Scripts
 ===============================================================================

@@ -10,7 +10,7 @@ ScriptName = "Auto Hosting"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Auto Hosting for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.2"
+Version = "1.2.4"
 
 configFile = "config.json"
 settings = {}
@@ -45,9 +45,9 @@ def Init():
 			"useCooldown": True,
 			"useCooldownMessages": True,
 			"cooldown": 1,
-			"onCooldown": "$user, $command is still on cooldown for $cd seconds!",
+			"onCooldown": "$user, $command is still on cooldown for $cd minutes!",
 			"userCooldown": 300,
-			"onUserCooldown": "$user, $command is still on user cooldown for $cd seconds! ",
+			"onUserCooldown": "$user, $command is still on user cooldown for $cd minutes! ",
 			"addedResponse" : "$user, you have been added to the hosting list! Someone will be hosted in $remaining minutes!",
 			"alreadyResponse" : "$user, you are already in the hosting list! Someone will be hosted in $remaining minutes!"
 		}
@@ -58,7 +58,6 @@ def Execute(data):
 
 	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and Parent.HasPermission(data.User, settings["permission"], "") and (settings["offlineOnly"] and (not Parent.IsLive()) or (not settings["offlineOnly"])):
 		outputMessage = ""
-		cd = ""
 		userId = data.User			
 		username = data.UserName
 		points = Parent.GetPoints(userId)
@@ -68,18 +67,20 @@ def Execute(data):
 		if (costs > Parent.GetPoints(userId)) and settings["useCosts"]:
 			outputMessage = settings["responseNotEnoughPoints"]
 		elif settings["useBlacklist"] and (username in blackList):
-			cd = str(int(blackList[username] - currentTime) / 60) + ":" + str(int(blackList[username] - currentTime) % 60)
+			cd = str(int(blackList[username] - currentTime) / 60) + ":" + str(int(blackList[username] - currentTime) % 60).zfill(2) 
 			outputMessage = settings["blacklistResponse"] 
 			outputMessage = outputMessage.replace("$cd", cd)
 		elif settings["useCooldown"] and (Parent.IsOnCooldown(ScriptName, settings["command"]) or Parent.IsOnUserCooldown(ScriptName, settings["command"], userId)):
 			if settings["useCooldownMessages"]:
 				if Parent.GetCooldownDuration(ScriptName, settings["command"]) > Parent.GetUserCooldownDuration(ScriptName, settings["command"], userId):
-					cd = Parent.GetCooldownDuration(ScriptName, settings["command"])
+					cdi = Parent.GetCooldownDuration(ScriptName, settings["command"])
+					cd = str(cdi / 60) + ":" + str(cdi % 60).zfill(2) 
 					outputMessage = settings["onCooldown"]
 				else:
-					cd = Parent.GetUserCooldownDuration(ScriptName, settings["command"], userId)
+					cdi = Parent.GetUserCooldownDuration(ScriptName, settings["command"], userId)
+					cd = str(cdi / 60) + ":" + str(cdi % 60).zfill(2) 
 					outputMessage = settings["onUserCooldown"]
-				outputMessage = outputMessage.replace("$cd", str(cd))
+				outputMessage = outputMessage.replace("$cd", cd)
 			else:
 				outputMessage = ""
 		else:
@@ -97,7 +98,7 @@ def Execute(data):
 				Parent.AddUserCooldown(ScriptName, settings["command"], userId, settings["userCooldown"])
 				Parent.AddCooldown(ScriptName, settings["command"], settings["cooldown"])
 
-		remaining = str(int(resetTime - currentTime) / 60) + ":" + str(int(resetTime - currentTime) % 60) 
+		remaining = str(int(resetTime - currentTime) / 60) + ":" + str(int(resetTime - currentTime) % 60).zfill(2) 
 		
 		outputMessage = outputMessage.replace("$remaining", remaining)
 		outputMessage = outputMessage.replace("$user", username)

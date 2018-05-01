@@ -9,7 +9,7 @@ ScriptName = "Dice Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Dice Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.2"
+Version = "1.2.4"
 
 configFile = "config.json"
 settings = {}
@@ -39,9 +39,9 @@ def Init():
 			"useCooldown": True,
 			"useCooldownMessages": True,
 			"cooldown": 1,
-			"onCooldown": "$user, $command is still on cooldown for $cd seconds!",
+			"onCooldown": "$user, $command is still on cooldown for $cd minutes!",
 			"userCooldown": 300,
-			"onUserCooldown": "$user, $command is still on user cooldown for $cd seconds!",
+			"onUserCooldown": "$user, $command is still on user cooldown for $cd minutes!",
 			"responseNotEnoughPoints": "$user you have only $points $currency to roll the dices.",
 			"responseWon": "$user rolls the dices $dices and wins $reward $currency",
 			"responseLost": "$user rolls the dices $dices and looses $cost $currency"
@@ -53,8 +53,6 @@ def Execute(data):
 		userId = data.User			
 		username = data.UserName
 		points = Parent.GetPoints(userId)
-		costs = 0
-		cd = ""
 
 		if settings["useCustomCosts"] and (data.GetParamCount() == 2):
 			try: 
@@ -72,12 +70,14 @@ def Execute(data):
 		elif settings["useCooldown"] and (Parent.IsOnCooldown(ScriptName, settings["command"]) or Parent.IsOnUserCooldown(ScriptName, settings["command"], userId)):
 			if settings["useCooldownMessages"]:
 				if Parent.GetCooldownDuration(ScriptName, settings["command"]) > Parent.GetUserCooldownDuration(ScriptName, settings["command"], userId):
-					cd = Parent.GetCooldownDuration(ScriptName, settings["command"])
+					cdi = Parent.GetCooldownDuration(ScriptName, settings["command"])
+					cd = str(cdi / 60) + ":" + str(cdi % 60).zfill(2) 
 					outputMessage = settings["onCooldown"]
 				else:
-					cd = Parent.GetUserCooldownDuration(ScriptName, settings["command"], userId)
+					cdi = Parent.GetUserCooldownDuration(ScriptName, settings["command"], userId)
+					cd = str(cdi / 60) + ":" + str(cdi % 60).zfill(2) 
 					outputMessage = settings["onUserCooldown"]
-				outputMessage = outputMessage.replace("$cd", str(cd))
+				outputMessage = outputMessage.replace("$cd", cd)
 			else:
 				outputMessage = ""
 		else:

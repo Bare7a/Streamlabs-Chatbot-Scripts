@@ -9,7 +9,7 @@ ScriptName = "Sound Player"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Sound Player for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.2"
+Version = "1.2.4"
 
 configFile = "config.json"
 settings = {}
@@ -39,9 +39,9 @@ def Init():
 			"useCooldown": True,
 			"useCooldownMessages": True,
 			"cooldown": 600,
-			"onCooldown": "$user, $command is still on cooldown for $cd seconds!",
+			"onCooldown": "$user, $command is still on cooldown for $cd minutes!",
 			"userCooldown": 1800,
-			"onUserCooldown": "$user, $command is still on user cooldown for $cd seconds!",
+			"onUserCooldown": "$user, $command is still on user cooldown for $cd minutes!",
 			"responsePlaylist" : "Available sounds: $playlist",
 			"responseNotEnoughPoints": "$user you have only $points $currency to pull the lever.",
 			"responseWrongSound" : "$user the sound you've tried to play doesn't exist."
@@ -80,20 +80,20 @@ def Execute(data):
 		username = data.UserName
 		points = Parent.GetPoints(userId)
 		costs = settings["costs"]
-		cd = ""
-		sound = ""
 
 		if (costs > points):
 			outputMessage = settings["responseNotEnoughPoints"]
 		elif settings["useCooldown"] and (Parent.IsOnCooldown(ScriptName, settings["command"]) or Parent.IsOnUserCooldown(ScriptName, settings["command"], userId)):
 			if settings["useCooldownMessages"]:
 				if Parent.GetCooldownDuration(ScriptName, settings["command"]) > Parent.GetUserCooldownDuration(ScriptName, settings["command"], userId):
-					cd = Parent.GetCooldownDuration(ScriptName, settings["command"])
+					cdi = Parent.GetCooldownDuration(ScriptName, settings["command"])
+					cd = str(cdi / 60) + ":" + str(cdi % 60).zfill(2) 
 					outputMessage = settings["onCooldown"]
 				else:
-					cd = Parent.GetUserCooldownDuration(ScriptName, settings["command"], userId)
+					cdi = Parent.GetUserCooldownDuration(ScriptName, settings["command"], userId)
+					cd = str(cdi / 60) + ":" + str(cdi % 60).zfill(2) 
 					outputMessage = settings["onUserCooldown"]
-				outputMessage = outputMessage.replace("$cd", str(cd))
+				outputMessage = outputMessage.replace("$cd", cd)
 			else:
 				outputMessage = ""
 		else:
