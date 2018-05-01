@@ -71,6 +71,6 @@
         "label": "Open 'Readme Me' file",
         "tooltip": "Opens the 'Readme.txt' for this script.",
         "function": "OpenReadMe",
-        "wsevent": "",
+        "wsevent": ""
     }
 }
