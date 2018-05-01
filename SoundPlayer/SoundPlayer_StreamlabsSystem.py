@@ -7,9 +7,9 @@ import codecs
 
 ScriptName = "Sound Player"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
-Description = "Sound Player for Twitch chat"
+Description = "Sound Player for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.0"
+Version = "1.2.2"
 
 configFile = "config.json"
 settings = {}
@@ -21,10 +21,10 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global sounds, playlist, soundspath, settings, configFile
+	global sounds, playlist, soundspath, settings
 
 	path = os.path.dirname(__file__)
-	soundspath = path + "\sounds"
+	soundspath = path + "\\sounds"
 
 	try:
 		with codecs.open(os.path.join(path, configFile), encoding='utf-8-sig', mode='r') as file:
@@ -58,8 +58,6 @@ def Init():
 	return
 
 def Execute(data):
-	global sounds, playlist, soundspath, settings, ScriptName
-
 	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and data.GetParamCount() == 1 and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
 		userId = data.User			
 		username = data.UserName

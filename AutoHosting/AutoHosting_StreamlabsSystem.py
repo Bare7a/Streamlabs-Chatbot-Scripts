@@ -8,9 +8,9 @@ import time
 
 ScriptName = "Auto Hosting"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
-Description = "Auto Hosting for Twitch chat"
+Description = "Auto Hosting for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.0"
+Version = "1.2.2"
 
 configFile = "config.json"
 settings = {}
@@ -24,7 +24,7 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global settings, configFile, resetTime, delayTime, delay
+	global settings
 
 	path = os.path.dirname(__file__)
 	try:
@@ -51,14 +51,10 @@ def Init():
 			"addedResponse" : "$user, you have been added to the hosting list! Someone will be hosted in $remaining minutes!",
 			"alreadyResponse" : "$user, you are already in the hosting list! Someone will be hosted in $remaining minutes!"
 		}
-
-	currentTime = time.time() 
-	resetTime = currentTime + (settings["hostCountdown"] * 60)
-	delayTime = currentTime + delay 
 	return
 
 def Execute(data):
-	global settings, ScriptName, userList, blackList
+	global userList, blackList
 
 	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and Parent.HasPermission(data.User, settings["permission"], "") and (settings["offlineOnly"] and (not Parent.IsLive()) or (not settings["offlineOnly"])):
 		outputMessage = ""

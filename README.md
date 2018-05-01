@@ -35,6 +35,15 @@
   - Customisable cooldown / user cooldown timers 
   - Customisable response messages
 
+## [Raffle Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Dice)
+  - Enable/Disable using the command when the stream is online
+  - Customisable command name
+  - Customisable permission for using the command
+  - Customisable min/max betting ammounts 
+  - Customisable raffle cycle time
+  - Customisable betting time
+  - Customisable response messages
+
 ## [Slots Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Slots)
   - Enable/Disable using the command when the stream is offline
   - Enable/Disable using custom betting ammounts

@@ -8,9 +8,9 @@ import time
 
 ScriptName = "Words Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
-Description = "Words Minigame for Twitch chat"
+Description = "Words Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.0"
+Version = "1.2.2"
 
 configFile = "config.json"
 wordsFile = "words.txt"
@@ -18,15 +18,15 @@ settings = {}
 
 wordsList = []
 currentWord = ""
+currentReward = 0
 
 resetTime = 0
-reward = 0
 
 def ScriptToggled(state):
 	return
 
 def Init():
-	global settings, configFile, wordsFile, resetTime, wordsList
+	global settings, wordsFile, wordsList
 
 	path = os.path.dirname(__file__)
 	try:
@@ -50,26 +50,26 @@ def Init():
 	except:
 		wordsList = ["red", "green", "blue", "orange", "brown", "black", "white"]
 	
-	resetTime = time.time()
 	return
 
 def Execute(data):
-	global settings, resetTime, currentWord, reward
+	global currentWord, currentReward
 
 	if data.IsChatMessage() and ((data.Message == currentWord) or (settings["ignoreCaseSensitivity"] and (data.Message.lower() == currentWord.lower()))) and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
 		userId = data.User			
 		username = data.UserName
 
-		Parent.AddPoints(userId, username, reward)
+		Parent.AddPoints(userId, username, currentReward)
 
 		outputMessage = settings["responseWon"]	
 
 		outputMessage = outputMessage.replace("$word", currentWord)
 		outputMessage = outputMessage.replace("$user", username)
-		outputMessage = outputMessage.replace("$reward", str(reward))
+		outputMessage = outputMessage.replace("$reward", str(currentReward))
 		outputMessage = outputMessage.replace("$currency", Parent.GetCurrencyName())
 
 		currentWord = ""
+		currentReward = 0
 
 		Parent.SendStreamMessage(outputMessage)
 	return
@@ -90,7 +90,7 @@ def OpenWordsFile():
 
 
 def Tick():
-	global settings, resetTime, wordsList, currentWord, reward
+	global settings, resetTime, wordsList, currentWord, currentReward
 
 	if (settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"]):
 		currentTime = time.time()
@@ -99,11 +99,11 @@ def Tick():
 			resetTime = currentTime + (settings["wordInterval"] * 60)
 			outputMessage = settings["responseAnnouncement"]
 
-			reward = Parent.GetRandom(settings["minReward"], settings["maxReward"])
+			currentReward = Parent.GetRandom(settings["minReward"], settings["maxReward"])
 			currentWord = wordsList[Parent.GetRandom(0, len(wordsList))] 
 
 			outputMessage = outputMessage.replace("$word", currentWord)
-			outputMessage = outputMessage.replace("$reward", str(reward))
+			outputMessage = outputMessage.replace("$reward", str(currentReward))
 			outputMessage = outputMessage.replace("$currency", Parent.GetCurrencyName())
 
 			Parent.SendStreamMessage(outputMessage)

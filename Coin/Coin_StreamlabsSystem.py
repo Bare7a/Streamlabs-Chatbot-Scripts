@@ -7,9 +7,9 @@ import codecs
 
 ScriptName = "Coin Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
-Description = "Coin Minigame for Twitch chat"
+Description = "Coin Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.0"
+Version = "1.2.2"
 
 configFile = "config.json"
 settings = {}
@@ -18,7 +18,7 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global settings, configFile
+	global settings
 
 	path = os.path.dirname(__file__)
 	try:
@@ -46,8 +46,6 @@ def Init():
 		}
 
 def Execute(data):
-	global settings, ScriptName
-
 	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
 		outputMessage = ""
 		userId = data.User			

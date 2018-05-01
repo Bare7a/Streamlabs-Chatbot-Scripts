@@ -7,9 +7,9 @@ import codecs
 
 ScriptName = "Slots Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
-Description = "Slots Minigame game for Twitch chat"
+Description = "Slots Minigame game for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.0"
+Version = "1.2.2"
 
 configFile = "config.json"
 settings = {}
@@ -20,7 +20,7 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global settings, configFile, emotes
+	global responses, settings, emotes
 
 	path = os.path.dirname(__file__)
 	try:
@@ -68,8 +68,6 @@ def Init():
 
 
 def Execute(data):
-	global emotes, settings, ScriptName
-
 	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
 		outputMessage = ""
 		userId = data.User			
@@ -105,9 +103,9 @@ def Execute(data):
 		else:
 			Parent.RemovePoints(userId, username, costs)
 
-			slot1 = emotes[Parent.GetRandom(0, len(emotes))];
-			slot2 = emotes[Parent.GetRandom(0, len(emotes))];
-			slot3 = emotes[Parent.GetRandom(0, len(emotes))];
+			slot1 = emotes[Parent.GetRandom(0, len(emotes))]
+			slot2 = emotes[Parent.GetRandom(0, len(emotes))]
+			slot3 = emotes[Parent.GetRandom(0, len(emotes))]
 			slots = [slot1, slot2, slot3]
 
 			emotesString = " ".join(slots)

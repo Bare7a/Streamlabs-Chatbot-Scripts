@@ -1,0 +1,111 @@
+﻿{
+    "output_file": "config.json",
+    
+    "liveOnly": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Live Only Mode",
+        "tooltip": "True if you want it to only run when you are streaming",
+        "group" : "General"
+    },
+    "command": {
+        "type": "textbox",
+        "value": "!raffle",
+        "label": "Command",
+        "tooltip": "Name of the command",
+        "group": "General"
+    },
+    "minBet": {
+        "type": "numberbox",
+        "value": 1,
+        "label": "Min Bet",
+        "tooltip": "Set the minimum bet user can place.",
+        "group": "General"
+    },
+    "maxBet": {
+        "type": "numberbox",
+        "value": 100,
+        "label": "Max Bet",
+        "tooltip": "Set the maximum bet user can place.",
+        "group": "General"
+    },
+    "startCountdown": {
+        "type": "numberbox",
+        "value": 1800,
+        "label": "Raffle Cycle (Seconds)",
+        "tooltip": "Time between starting a new raffle in seconds",
+        "group": "General"
+    },
+    "betCountdown": {
+        "type": "numberbox",
+        "value": 300,
+        "label": "Betting Time (Seconds)",
+        "tooltip": "Time that users can place bets in seconds",
+        "group": "General"
+    },
+    "permission": {
+        "type": "dropdown",
+        "value": "Everyone",
+        "items": ["Everyone","Regular","Subscriber","Moderator","Editor"],
+        "label": "Permission level",
+        "tooltip": "Set the permission level for the command",
+        "group": "General"
+    },
+    "startedResponse": {
+        "type": "textbox",
+        "value": "Raffle started! You can bet by typing $command <$min - $max>",
+        "label": "Start response",
+        "tooltip": "Message that will be posted when the raffle has started.\r\n $min = Minimum bet\r\n $max = Maximum bet\r\n $currency = Name of currency \r\n $command = Name of command",
+        "group": "Responses"
+    },
+    "userBettedResponse": {
+        "type": "textbox",
+        "value": "$user betted $bet $currency in the raffle!",
+        "label": "Betted response",
+        "tooltip": "Message that will be posted when the user places a bet.\r\n $user = Username\r\n $bet = Betted ammount \r\n $points = Current user points\r\n $min = Minimum bet\r\n $max = Maximum bet\r\n $currency = Name of currency\r\n $command = Name of command",
+        "group": "Responses"
+    },
+    "userWonResponse": {
+        "type": "textbox",
+        "label": "Winner response",
+        "value": "Raffle: $user won $win $currency!",
+        "tooltip": "Message that will be posted when a winner is announced. \r\n $user = Username \r\n $win = Winning ammount \r\n $currency = Name of currency",
+        "group": "Responses"
+    },
+    "noBetsResponse": {
+        "type": "textbox",
+        "value": "Raffle: nobody betted!",
+        "label": "No bets response",
+        "tooltip": "Message that will be posted when there weren't any bets.",
+        "group": "Responses"
+    },
+    "notOpenedResponse": {
+        "type": "textbox",
+        "value": "Raffle isn't opened right now!",
+        "label": "Not opened response",
+        "tooltip": "Message that will be posted when a user tries to bet when the raffle isn't opened.\r\n $user = Username\r\n $points = Current user points\r\n $min = Minimum bet\r\n $max = Maximum bet\r\n $currency = Name of currency\r\n $command = Name of command",
+        "group": "Responses"
+    },
+    "alreadyBettedResponse": {
+        "type": "textbox",
+        "value" : "$user, you are already betted in the raffle!",
+        "label": "Already betted response",
+        "tooltip": "Message that will be posted when a user tries place a bet when he already did.\r\n $user = Username\r\n $points = Current user points\r\n $min = Minimum bet\r\n $max = Maximum bet\r\n $currency = Name of currency\r\n $command = Name of command",
+        "group": "Responses"
+    },
+    "wrongAmmountResponse": {
+        "type": "textbox",
+        "value" : "$user you can bet between $min - $max $currency. Currently you have $points $currency.",
+        "label": "Incorrect bet",
+        "tooltip": "Message that will be posted when a user tries place an incorrect bet.\r\n $user = Username\r\n $points = Current user points\r\n $min = Minimum bet\r\n $max = Maximum bet\r\n $currency = Name of currency\r\n $command = Name of command",
+        "group": "Responses"
+    },
+    "openReadMe": {
+        "type": "button",
+        "label": "Open 'Readme Me' file",
+        "tooltip": "Opens the 'Readme.txt' for this script.",
+        "function": "OpenReadMe",
+        "wsevent": "",
+        "group": ""
+    }
+}

@@ -8,9 +8,9 @@ import time
 
 ScriptName = "Trivia Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
-Description = "Trivia Minigame for Twitch chat"
+Description = "Trivia Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.0"
+Version = "1.2.2"
 
 configFile = "config.json"
 questionsFile = "questions.txt"
@@ -19,15 +19,16 @@ settings = {}
 questionsList = []
 currentQuestion = ""
 currentAnswer = ""
+currentReward = 0
 
 resetTime = 0
-reward = 0
+
 
 def ScriptToggled(state):
 	return
 
 def Init():
-	global settings, configFile, questionsFile, resetTime, questionsList
+	global questionsList, settings 
 
 	path = os.path.dirname(__file__)
 	try:
@@ -52,28 +53,28 @@ def Init():
 	except:
 		questionsList = [["What color is the grass?","Green"], ["What's 2 + 2?","4"]]
 	
-	resetTime = time.time()
 	return
 
 def Execute(data):
-	global settings, currentQuestion, currentAnswer, reward
+	global currentQuestion, currentAnswer, currentReward
 
 	if data.IsChatMessage() and ((data.Message == currentAnswer) or (settings["ignoreCaseSensitivity"] and (data.Message.lower() == currentAnswer.lower()))) and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
 		userId = data.User			
 		username = data.UserName
 
-		Parent.AddPoints(userId, username, reward)
+		Parent.AddPoints(userId, username, currentReward)
 
 		outputMessage = settings["responseWon"]	
 
 		outputMessage = outputMessage.replace("$user", username)
 		outputMessage = outputMessage.replace("$question", currentQuestion)
 		outputMessage = outputMessage.replace("$answer", currentAnswer)
-		outputMessage = outputMessage.replace("$reward", str(reward))
+		outputMessage = outputMessage.replace("$reward", str(currentReward))
 		outputMessage = outputMessage.replace("$currency", Parent.GetCurrencyName())
 
 		currentQuestion = ""
 		currentAnswer = ""
+		currentReward = 0
 
 		Parent.SendStreamMessage(outputMessage)
 	return
@@ -94,7 +95,7 @@ def OpenQuestionsFile():
 
 
 def Tick():
-	global settings, resetTime, questionsList, currentQuestion, currentAnswer, reward
+	global resetTime, currentQuestion, currentAnswer, currentReward
 
 	if (settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"]):
 		currentTime = time.time()
@@ -107,10 +108,10 @@ def Tick():
 			currentQuestion = questionsList[randomIndex][0] 
 			currentAnswer = questionsList[randomIndex][1]
 
-			reward = Parent.GetRandom(settings["minReward"], settings["maxReward"])
+			currentReward = Parent.GetRandom(settings["minReward"], settings["maxReward"])
 			outputMessage = outputMessage.replace("$question", currentQuestion)
 			outputMessage = outputMessage.replace("$answer", currentAnswer)
-			outputMessage = outputMessage.replace("$reward", str(reward))
+			outputMessage = outputMessage.replace("$reward", str(currentReward))
 			outputMessage = outputMessage.replace("$currency", Parent.GetCurrencyName())
 
 			Parent.SendStreamMessage(outputMessage)

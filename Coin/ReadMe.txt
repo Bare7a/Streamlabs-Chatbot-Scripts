@@ -1,6 +1,6 @@
 ===============================================================================
- Name: 		Coin Minigame for Twitch chat
- Version: 	1.2.0
+ Name: 		Coin Minigame for Streamlabs Bot
+ Version: 	1.2.2
  Creator: 	Bare7a
  Website:	https://github.com/Bare7a/Streamlabs-Chatbot-Scripts
 ===============================================================================

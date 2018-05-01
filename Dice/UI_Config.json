@@ -75,8 +75,8 @@
     "useCooldown": {
         "type": "checkbox",
         "value": true,
-        "label": "Use Cooldown Messages",
-        "tooltip": "Enable/Disable cooldown messages",
+        "label": "Use Cooldown",
+        "tooltip": "Enable/Disable cooldown",
         "group": "Cooldown"
     },
     "useCooldownMessages": {
