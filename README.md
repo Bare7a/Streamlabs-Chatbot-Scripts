@@ -36,7 +36,7 @@
   - Customisable response messages
 
 ## [Raffle Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Raffle)
-  - Enable/Disable using the command when the stream is online
+  - Enable/Disable using the command when the stream is offline
   - Customisable command name
   - Customisable permission for using the command
   - Customisable min/max betting ammounts 
