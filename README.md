@@ -35,7 +35,7 @@
   - Customisable cooldown / user cooldown timers 
   - Customisable response messages
 
-## [Raffle Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Dice)
+## [Raffle Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Raffle)
   - Enable/Disable using the command when the stream is online
   - Customisable command name
   - Customisable permission for using the command
