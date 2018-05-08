@@ -1,4 +1,4 @@
-﻿# Streamlabs-Chatbot-Scripts
+# Streamlabs-Chatbot-Scripts
 
 ## [Auto Hosting](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/AutoHosting)
   - Enable/Disable using the command when the stream is online

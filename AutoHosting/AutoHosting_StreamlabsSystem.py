@@ -1,4 +1,4 @@
-﻿import clr
+import clr
 import sys
 import json
 import os
@@ -10,7 +10,7 @@ ScriptName = "Auto Hosting"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Auto Hosting for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.4"
+Version = "1.2.5"
 
 configFile = "config.json"
 settings = {}
