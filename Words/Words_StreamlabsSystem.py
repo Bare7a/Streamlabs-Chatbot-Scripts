@@ -46,9 +46,7 @@ def Init():
 
 	try: 
 		with codecs.open(os.path.join(path, wordsFile),encoding="utf-8", mode="r") as file:
-			for line in file:
-				if len(line.strip()) != 0:
-					wordsList.append(line)
+			wordsList = [line.strip() for line in file if line.strip()]
 	except:
 		wordsList = ["red", "green", "blue", "orange", "brown", "black", "white"]
 	

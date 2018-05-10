@@ -48,8 +48,7 @@ def Init():
 
 	try: 
 		with codecs.open(os.path.join(path, questionsFile), encoding="utf-8", mode="r") as file:
-			for line in file if line:
-				questionsList.append(eval(line))
+			questionsList = [eval(line.strip()) for line in file if line.strip()]
 	except:
 		questionsList = [["What color is the grass?","Green"], ["What's 2 + 2?","4"]]
 	
