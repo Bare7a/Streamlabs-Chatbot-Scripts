@@ -42,6 +42,7 @@ def Init():
 			"onCooldown": "$user, $command is still on cooldown for $cd minutes!",
 			"userCooldown": 1800,
 			"onUserCooldown": "$user, $command is still on user cooldown for $cd minutes!",
+			"playlistSeparator" : " - ",
 			"responsePlaylist" : "Available sounds: $playlist",
 			"responseNotEnoughPoints": "$user you have only $points $currency to pull the lever.",
 			"responseWrongSound" : "$user the sound you've tried to play doesn't exist."
@@ -55,7 +56,7 @@ def Init():
 		playlistArr.append(soundFile[0]) 
 		sounds[soundFile[0].lower()] = soundFile[1].lower() 
 
-	playlist = ', '.join(playlistArr)
+	playlist = settings["playlistSeparator"].join(playlistArr)
 
 	return
 

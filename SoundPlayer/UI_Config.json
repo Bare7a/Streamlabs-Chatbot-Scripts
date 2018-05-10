@@ -79,6 +79,13 @@
         "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n $user = Username\r\n $cd = time remaining",
         "group": "Cooldown"
     },
+    "playlistSeparator": {
+        "type": "textbox",
+        "value": " - ",
+        "label": "Playlist Separator",
+        "tooltip": "The separator that will be used for the $playlist parameter. \r\n Ex.1 with ' - ': Yes - No - Haha - Yeah \r\n Ex.2 with ', ' : Yes, No, Haha, Yeah",
+        "group": "Response Messages"
+    },
     "responsePlaylist": {
         "type": "textbox",
         "value": "Available sounds: $playlist",
