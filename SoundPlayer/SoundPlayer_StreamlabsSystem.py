@@ -48,12 +48,14 @@ def Init():
 		}
 
 	soundsList = os.listdir(soundspath)	
-		
+	playlistArr = []
+
 	for	sound in soundsList:
-		soundFile = sound.rsplit('.', 1) 
+		soundFile = sound.rsplit('.', 1)
+		playlistArr.append(soundFile[0]) 
 		sounds[soundFile[0].lower()] = soundFile[1].lower() 
 
-	playlist = ', '.join(sounds.keys())
+	playlist = ', '.join(playlistArr)
 
 	return
 
