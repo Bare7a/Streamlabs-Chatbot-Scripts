@@ -117,8 +117,8 @@ def Execute(data):
 			outputMessage = outputMessage.replace("$dice1", str(dice1))
 			outputMessage = outputMessage.replace("$dice2", str(dice2))
 			outputMessage = outputMessage.replace("$dice3", str(dice3))
-			outputMessage = outputMessage.replace("$dices", str(dices))
 			outputMessage = outputMessage.replace("$dicesSum", str(dicesSum))
+			outputMessage = outputMessage.replace("$dices", str(dices))
 			outputMessage = outputMessage.replace("$reward", str(reward))
 
 			if settings["useCooldown"]:
