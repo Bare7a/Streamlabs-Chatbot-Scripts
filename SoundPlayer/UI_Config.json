@@ -95,7 +95,7 @@
     },
     "responseNotEnoughPoints": {
         "type": "textbox",
-        "value": "$user you have only $points $currency to pull the lever.",
+        "value": "$user need $cost $currency to play a sound.",
         "label": "Not enough points",
         "tooltip": "Message that will be posted if the user doesn't have enough points.\r\n $user = Username\r\n $currency = Name of Currency\r\n $cost = Cost to play sound \r\n $sound = Sound name \r\n $playlist = Playlist",
         "group": "Response Messages"

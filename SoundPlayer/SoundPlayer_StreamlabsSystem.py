@@ -44,7 +44,7 @@ def Init():
 			"onUserCooldown": "$user, $command is still on user cooldown for $cd minutes!",
 			"playlistSeparator" : " - ",
 			"responsePlaylist" : "Available sounds: $playlist",
-			"responseNotEnoughPoints": "$user you have only $points $currency to pull the lever.",
+			"responseNotEnoughPoints": "$user need $cost $currency to play a sound.",
 			"responseWrongSound" : "$user the sound you've tried to play doesn't exist."
 		}
 
