@@ -1,0 +1,111 @@
+{
+    "output_file": "config.json",
+
+    "liveOnly": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Live Only Mode",
+        "tooltip": "True if you want it to only run when you are live",
+        "group" : "General"
+    },
+    "command": {
+        "type": "textbox",
+        "value": "!steal",
+        "label": "Command",
+        "tooltip": "Name of the command",
+        "group": "General"
+    },
+    "permission": {
+        "type": "dropdown",
+        "value": "Everyone",
+        "items": ["Everyone","Regular","Subscriber","Moderator","Editor"],
+        "label": "Permission level",
+        "tooltip": "Set the permission level for the command",
+        "group": "General"
+    },
+    "useCustomCosts": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use custom costs",
+        "tooltip": "Enable/Disable user defined cost",
+        "group": "Currency"
+    },
+    "costs": {
+        "type": "numberbox",
+        "value": 10,
+        "label": "Default Cost",
+        "tooltip": "Set the default cost for this command.",
+        "group": "Currency"
+    },
+    "useCooldown": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use Cooldowns",
+        "tooltip": "Enable/Disable cooldown and user cooldown",
+        "group": "Cooldown"
+    },
+    "useCooldownMessages": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use Cooldown Messages",
+        "tooltip": "Enable/Disable cooldown messages",
+        "group": "Cooldown"
+    },
+    "cooldown": {
+        "type": "numberbox",
+        "label": "Cooldown (seconds)",
+        "value": 1,
+        "tooltip": "Cooldown in seconds.",
+        "group": "Cooldown"
+    },
+    "onCooldown": {
+        "type": "textbox",
+        "value": "$user, $command is still on cooldown for $cd minutes!",
+        "label": "Cooldown Response",
+        "tooltip": "The message that the bot will display when the command is on cooldown. \r\n $user = Username \r\n $cd = Time remaining \r\n $command = Command name",
+        "group": "Cooldown"
+    },
+    "userCooldown": {
+        "type": "numberbox",
+        "label": "User Cooldown (seconds)",
+        "value": 120,
+        "tooltip": "User cooldown in seconds.",
+        "group": "Cooldown"
+    },
+    "onUserCooldown": {
+        "type": "textbox",
+        "value": "$user, $command is still on user cooldown for $cd minutes!",
+        "label": "User Cooldown Response",
+        "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n $user = Username \r\n $cd = Time remaining \r\n $command = Command name",
+        "group": "Cooldown"
+    },
+    "responseNotEnoughPoints": {
+        "type": "textbox",
+        "value": "$user you have only $points $currency to flip the coin.",
+        "label": "Not enough points",
+        "tooltip": "Message that will be posted if the user doesn't have enough points.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of Currency\r\n $cost = Cost to play",
+        "group": "Response Messages"
+    },
+    "responseWon": {
+        "type": "textbox",
+        "value": "$user stole $cost $currency from $victim",
+        "label": "User wins message",
+        "tooltip": "Message that will be posted if the user wins.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of Currency\r\n $reward = Winning reward\r\n $won = Emoticon for winning\r\n $cost = Cost to play",
+        "group": "Response Messages"
+    },
+    "responseLost": {
+        "type": "textbox",
+        "value": "$user couldn't steal any $currency from $victim and lost $cost $currency",
+        "label": "User looses message",
+        "tooltip": "Message that will be posted if the user loose.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of Currency\r\n $lost = Emoticon for losing\r\n $cost = Cost to play",
+        "group": "Response Messages"
+    },
+    "openReadMe": {
+        "type": "button",
+        "label": "Open 'Readme Me' file",
+        "tooltip": "Opens the 'Readme.txt' for this script.",
+        "function": "OpenReadMe",
+        "wsevent": "",
+        "group": ""
+    }
+}
