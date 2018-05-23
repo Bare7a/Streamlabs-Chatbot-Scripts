@@ -23,19 +23,19 @@
         "tooltip": "Set the permission level for the command",
         "group": "General"
     },
-    "useCustomCosts": {
-        "type": "checkbox",
-        "value": true,
-        "label": "Use custom costs",
-        "tooltip": "Enable/Disable user defined cost",
-        "group": "Currency"
-    },
-    "costs": {
+    "minReward": {
         "type": "numberbox",
-        "value": 10,
-        "label": "Default Cost",
-        "tooltip": "Set the default cost for this command.",
-        "group": "Currency"
+        "value": 1,
+        "label": "Min reward",
+        "tooltip": "Minimum ammount of points that the user can steal",
+        "group" : "General"
+    },
+    "maxReward": {
+        "type": "numberbox",
+        "value": 20,
+        "label": "Max reward",
+        "tooltip": "Maximum ammount of points that the user can steal",
+        "group" : "General"
     },
     "useCooldown": {
         "type": "checkbox",
@@ -79,25 +79,18 @@
         "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n $user = Username \r\n $cd = Time remaining \r\n $command = Command name",
         "group": "Cooldown"
     },
-    "responseNotEnoughPoints": {
-        "type": "textbox",
-        "value": "$user you have only $points $currency to flip the coin.",
-        "label": "Not enough points",
-        "tooltip": "Message that will be posted if the user doesn't have enough points.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of Currency\r\n $cost = Cost to play",
-        "group": "Response Messages"
-    },
     "responseWon": {
         "type": "textbox",
-        "value": "$user stole $cost $currency from $victim",
+        "value": "$user stole $reward $currency from $victim",
         "label": "User wins message",
-        "tooltip": "Message that will be posted if the user wins.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of Currency\r\n $reward = Winning reward\r\n $won = Emoticon for winning\r\n $cost = Cost to play",
+        "tooltip": "Message that will be posted if the user wins.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of Currency\r\n $reward = Winning reward",
         "group": "Response Messages"
     },
     "responseLost": {
         "type": "textbox",
-        "value": "$user couldn't steal any $currency from $victim and lost $cost $currency",
+        "value": "$user couldn't steal any $currency from $victim",
         "label": "User looses message",
-        "tooltip": "Message that will be posted if the user loose.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of Currency\r\n $lost = Emoticon for losing\r\n $cost = Cost to play",
+        "tooltip": "Message that will be posted if the user loose.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of Currency ",
         "group": "Response Messages"
     },
     "openReadMe": {

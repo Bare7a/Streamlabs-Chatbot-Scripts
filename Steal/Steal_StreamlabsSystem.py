@@ -29,15 +29,14 @@ def Init():
 			"liveOnly": True,
 			"command": "!steal",
 			"permission": "Everyone",
-			"useCustomCosts": True,
-			"costs": 10,
+			"minReward": 1,
+			"maxReward": 20,
 			"useCooldown": True,
 			"useCooldownMessages": True,
 			"cooldown": 1,
 			"onCooldown": "$user, $command is still on cooldown for $cd minutes!",
 			"userCooldown": 300,
 			"onUserCooldown": "$user $command is still on user cooldown for $cd minutes!",
-			"responseNotEnoughPoints": "$user you have only $points $currency to use $command.",
 			"responseWon": "$user stole $cost $currency from $victim",
 			"responseLost": "$user couldn't steal any $currency from $victim and lost $cost $currency"
 		}
@@ -49,20 +48,7 @@ def Execute(data):
 		username = data.UserName
 		points = Parent.GetPoints(userId)
 
-		if settings["useCustomCosts"] and (data.GetParamCount() == 2):
-			try: 
-				costs = int(data.GetParam(1))
-			except:
-				if data.GetParam(1) == 'all': 
-					costs = points
-				else :
-					costs = settings["costs"] 
-		else:
-			costs = settings["costs"]
-
-		if (costs > Parent.GetPoints(userId)) or (costs < 1):
-			outputMessage = settings["responseNotEnoughPoints"]
-		elif settings["useCooldown"] and (Parent.IsOnCooldown(ScriptName, settings["command"]) or Parent.IsOnUserCooldown(ScriptName, settings["command"], userId)):
+		if settings["useCooldown"] and (Parent.IsOnCooldown(ScriptName, settings["command"]) or Parent.IsOnUserCooldown(ScriptName, settings["command"], userId)):
 			if settings["useCooldownMessages"]:
 				if Parent.GetCooldownDuration(ScriptName, settings["command"]) > Parent.GetUserCooldownDuration(ScriptName, settings["command"], userId):
 					cdi = Parent.GetCooldownDuration(ScriptName, settings["command"])
@@ -77,29 +63,26 @@ def Execute(data):
 				outputMessage = ""
 		else:
 			isStealing = Parent.GetRandom(0, 2)
-			count = 0
+			userList = Parent.GetViewerList()
 			
 			while True:
-				victim = Parent.GetRandomActiveUser()
-				victimId = victim.lower()
+				victimId = userList[Parent.GetRandom(0, len(userList))]
 
-				if victim != username:
+				if victimId != userId:
 					break
-				
-				if count >= 10:
-					return
 
-				count += 1
+			victim = Parent.GetDisplayName(victimId)
 				
-
+			Parent.Log(ScriptName,victimId)
 			if isStealing == 1:
+				reward = Parent.GetRandom(settings["minReward"], settings["maxReward"] + 1)
+				Parent.AddPoints(userId, username, reward)
+				Parent.RemovePoints(victimId, victim, reward)
+
 				outputMessage = (settings["responseWon"])
-				Parent.AddPoints(userId, username, costs)
-				Parent.RemovePoints(victimId, victim, costs)
+				outputMessage = outputMessage.replace("$reward", str(reward))
 			else:
 				outputMessage = (settings["responseLost"])
-				Parent.RemovePoints(userId, username, costs)
-				Parent.AddPoints(victimId, victim, costs)
 
 			outputMessage = outputMessage.replace("$victim", victim)
 
@@ -107,7 +90,6 @@ def Execute(data):
 				Parent.AddUserCooldown(ScriptName, settings["command"], userId, settings["userCooldown"])
 				Parent.AddCooldown(ScriptName, settings["command"], settings["cooldown"])
 
-		outputMessage = outputMessage.replace("$cost", str(costs))
 		outputMessage = outputMessage.replace("$user", username)
 		outputMessage = outputMessage.replace("$points", str(points))
 		outputMessage = outputMessage.replace("$currency", Parent.GetCurrencyName())
