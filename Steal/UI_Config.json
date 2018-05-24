@@ -23,9 +23,16 @@
         "tooltip": "Set the permission level for the command",
         "group": "General"
     },
+    "costs": {
+        "type": "numberbox",
+        "value": 5,
+        "label": "Cost to play the game",
+        "tooltip": "Set the default cost for this command.",
+        "group": "General"
+    },
     "minReward": {
         "type": "numberbox",
-        "value": 1,
+        "value": 10,
         "label": "Min reward",
         "tooltip": "Minimum ammount of points that the user can steal",
         "group" : "General"
@@ -88,9 +95,16 @@
     },
     "responseLost": {
         "type": "textbox",
-        "value": "$user couldn't steal any $currency from $victim",
+        "value": "$user couldn't steal any $currency from $victim and lost $reward $currency",
         "label": "User looses message",
         "tooltip": "Message that will be posted if the user loose.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of Currency ",
+        "group": "Response Messages"
+    },
+    "responseNotEnoughPoints": {
+        "type": "textbox",
+        "value": "$user you $cost $currency to steal.",
+        "label": "Not enough points",
+        "tooltip": "Message that will be posted if the user doesn't have enough points.\r\n $user = Username\r\n $currency = Name of Currency\n $cost = Cost to play\r\n $minReward = Min reward\r\n $maxReward = Max reward",
         "group": "Response Messages"
     },
     "openReadMe": {

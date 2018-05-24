@@ -8,6 +8,7 @@
  - Enable/Disable cooldown / user cooldown
  - Enable/Disable cooldown / user cooldown messages
  - Customisable command name
+ - Customisable cost for using the command
  - Customisable stealing rewards (min-max)
  - Customisable permission for using the command
  - Customisable cooldown / user cooldown timers 

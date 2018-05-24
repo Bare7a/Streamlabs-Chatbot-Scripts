@@ -62,11 +62,12 @@
   - Enable/Disable cooldown / user cooldown
   - Enable/Disable cooldown / user cooldown messages
   - Customisable command name
+  - Customisable cost for using the command
   - Customisable stealing rewards (min-max)
   - Customisable permission for using the command
   - Customisable cooldown / user cooldown timers 
   - Customisable response messages
-
+  
 ## [Sound Player](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/SoundPlayer)
   - Enable/Disable using the command when the stream is offline
   - Enable/Disable cooldown / user cooldown
