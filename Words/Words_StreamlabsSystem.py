@@ -10,7 +10,7 @@ ScriptName = "Words Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Words Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.5"
+Version = "1.2.6"
 
 configFile = "config.json"
 wordsFile = "words.txt"
@@ -48,7 +48,7 @@ def Init():
 		with codecs.open(os.path.join(path, wordsFile),encoding="utf-8", mode="r") as file:
 			wordsList = [line.strip() for line in file if line.strip()]
 	except:
-		wordsList = ["red", "green", "blue", "orange", "brown", "black", "white"]
+		wordsList = ["If you see this message save the file as UTF-8"]
 	
 	return
 

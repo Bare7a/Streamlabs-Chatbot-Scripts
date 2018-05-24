@@ -1,6 +1,6 @@
 ===============================================================================
  Name: 		Steal Minigame for Streamlabs Bot
- Version: 	1.2.5
+ Version: 	1.2.6
  Creator: 	Bare7a
  Website:	https://github.com/Bare7a/Streamlabs-Chatbot-Scripts
 ===============================================================================

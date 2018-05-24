@@ -9,7 +9,7 @@ ScriptName = "Dice Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Dice Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.5"
+Version = "1.2.6"
 
 configFile = "config.json"
 settings = {}
