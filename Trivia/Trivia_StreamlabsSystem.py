@@ -47,7 +47,7 @@ def Init():
 		}
 
 	try: 
-		with codecs.open(os.path.join(path, questionsFile), encoding="utf-8", mode="r") as file:
+		with codecs.open(os.path.join(path, questionsFile), encoding="utf-8-sig", mode="r") as file:
 			questionsList = [eval(line.strip()) for line in file if line.strip()]
 	except:
 		questionsList = [["If you see this message save the file as UTF-8","Error"]]

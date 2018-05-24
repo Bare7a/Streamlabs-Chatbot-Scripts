@@ -45,7 +45,7 @@ def Init():
 		}
 
 	try: 
-		with codecs.open(os.path.join(path, wordsFile),encoding="utf-8", mode="r") as file:
+		with codecs.open(os.path.join(path, wordsFile),encoding="utf-8-sig", mode="r") as file:
 			wordsList = [line.strip() for line in file if line.strip()]
 	except:
 		wordsList = ["If you see this message save the file as UTF-8"]
