@@ -8,9 +8,7 @@
  - Enable/Disable cooldown / user cooldown
  - Enable/Disable cooldown / user cooldown messages
  - Customisable command name
- - Customisable voices - Male/Female
- - Customisable volume
- - Customisable speech rate
+ - Customisable voices, volume, speech rate
  - Customisable permission for using the command
  - Customisable cooldown / user cooldown timers 
  - Customisable response messages
