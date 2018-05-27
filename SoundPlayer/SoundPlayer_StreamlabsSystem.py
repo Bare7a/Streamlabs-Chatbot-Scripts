@@ -13,6 +13,7 @@ Version = "1.2.6"
 
 configFile = "config.json"
 settings = {}
+volume = 0.1
 soundspath = ""
 sounds = {}
 playlist = ""
@@ -21,7 +22,7 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global sounds, playlist, soundspath, settings
+	global sounds, playlist, soundspath, volume, settings
 
 	path = os.path.dirname(__file__)
 	soundspath = path + "\\sounds"
@@ -34,7 +35,7 @@ def Init():
 			"liveOnly": True,
 			"command": "!play",
 			"permission": "Everyone",
-			"volume": 50,
+			"volume": 50.0,
 			"costs": 100,
 			"useCooldown": True,
 			"useCooldownMessages": True,
@@ -48,6 +49,7 @@ def Init():
 			"responseWrongSound" : "$user the sound you've tried to play doesn't exist."
 		}
 
+	volume = settings["volume"] / 1000.0
 	soundsList = os.listdir(soundspath)	
 	playlistArr = []
 
@@ -104,7 +106,7 @@ def Execute(data):
 			
 			if sound in sounds:
 				soundpath = soundspath + "\\" + sound + "." + sounds[sound]
-				if Parent.PlaySound(soundpath, settings["volume"]): 
+				if Parent.PlaySound(soundpath, volume): 
 					Parent.RemovePoints(userId, username, costs)
 
 					if settings["useCooldown"]:
