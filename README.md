@@ -96,6 +96,16 @@
   - Customisable permission for participating
   - Customisable winning rewards (min-max)
   - Customisable timers for switching the questions
+  - Customisable response messages
+
+## [Welcome Announcer](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/WelcomeAnnouncer)
+  - Enable/Disable using the command when the stream is offline
+  - Enable/Disable cooldown / user cooldown
+  - Enable/Disable cooldown / user cooldown messages
+  - Customisable trigger words
+  - Customisable permissions for trigger
+  - Customisable volume power
+  - Customisable cooldown / user cooldown timers 
   - Customisable response messages 
 
 ## [Words Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Words)

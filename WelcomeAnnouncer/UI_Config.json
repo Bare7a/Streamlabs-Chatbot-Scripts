@@ -1,0 +1,93 @@
+{
+    "output_file": "config.json",
+
+    "liveOnly": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Live Only Mode",
+        "tooltip": "True if you want it to only run when you are live",
+        "group" : "General"
+    },
+    "words": {
+        "type": "textbox",
+        "value": "hey, hi, hello",
+        "label": "Play command",
+        "tooltip": "Words that will trigger the random sound",
+        "group": "General"
+    },
+    "permission": {
+        "type": "dropdown",
+        "value": "Everyone",
+        "items": ["Everyone","Regular","Subscriber","Moderator","Editor"],
+        "label": "Permission level",
+        "tooltip": "Set the permission level for the command",
+        "group": "General"
+    },
+    "volume": {
+        "type": "slider",
+        "value": 50.0,
+        "min": 1,
+        "max": 100,
+        "ticks": 1.0,
+        "label": "Volume",
+        "tooltip": "Set the volume power for the playing sounds.",
+        "group": "General"
+    },
+    "useCooldown": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Use Cooldown",
+        "tooltip": "Enable/Disable cooldown and user cooldown",
+        "group": "Cooldown"
+    },
+    "useCooldownMessages": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Use Cooldown Messages",
+        "tooltip": "Enable/Disable cooldown messages",
+        "group": "Cooldown"
+    },
+    "cooldown": {
+        "type": "numberbox",
+        "label": "Cooldown (seconds)",
+        "value": 1,
+        "tooltip": "Cooldown in seconds.",
+        "group": "Cooldown"
+    },
+    "onCooldown": {
+        "type": "textbox",
+        "value": "$user, $command is still on cooldown for $cd minutes!",
+        "label": "Cooldown Response",
+        "tooltip": "The message that the bot will display when the command is on cooldown. \r\n $user = Username\r\n $cd = time remaining",
+        "group": "Cooldown"
+    },
+    "userCooldown": {
+        "type": "numberbox",
+        "label": "User Cooldown (seconds)",
+        "value": 300,
+        "tooltip": "User cooldown in seconds.",
+        "group": "Cooldown"
+    },
+    "onUserCooldown": {
+        "type": "textbox",
+        "value": "$user, $command is still on user cooldown for $cd minutes!",
+        "label": "User Cooldown Response",
+        "tooltip": "The message that the bot will display when the command is on user cooldown. \r\n $user = Username\r\n $cd = time remaining",
+        "group": "Cooldown"
+    },
+    "responseHello": {
+        "type": "textbox",
+        "value": "Hello, $user!",
+        "label": "Greeting message",
+        "tooltip": "Message that will be posted when the user writes a trigger word.\r\n $user = Username",
+        "group": "Response Messages"
+    },
+    "openReadMe": {
+        "type": "button",
+        "label": "Open 'Readme Me' file",
+        "tooltip": "Opens the 'Readme.txt' for this script.",
+        "function": "OpenReadMe",
+        "wsevent": "",
+        "group": ""
+    }
+}
