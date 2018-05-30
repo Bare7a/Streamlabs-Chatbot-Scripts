@@ -15,6 +15,7 @@ Version = "1.2.6"
 configFile = "config.json"
 wordsFile = "words.txt"
 settings = {}
+parth = ""
 
 wordsList = []
 currentWord = ""
@@ -26,7 +27,7 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global settings, wordsFile, wordsList
+	global settings, wordsFile, wordsList, path
 
 	path = os.path.dirname(__file__)
 	try:
@@ -90,7 +91,7 @@ def OpenWordsFile():
 
 
 def Tick():
-	global settings, resetTime, wordsList, currentWord, currentReward
+	global wordsList, resetTime, currentWord, currentReward
 
 	if (settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"]):
 		currentTime = time.time()
@@ -100,7 +101,15 @@ def Tick():
 			outputMessage = settings["responseAnnouncement"]
 
 			currentReward = Parent.GetRandom(settings["minReward"], settings["maxReward"])
-			currentWord = wordsList[Parent.GetRandom(0, len(wordsList))] 
+			currentWord = wordsList.pop(Parent.GetRandom(0, len(wordsList))) 
+
+			if len(wordsList) == 0:
+				try: 
+					with codecs.open(os.path.join(path, wordsFile),encoding="utf-8-sig", mode="r") as file:
+						wordsList = [line.strip() for line in file if line.strip()]
+				except:
+					wordsList = ["If you see this message save the file as UTF-8"]
+
 
 			outputMessage = outputMessage.replace("$word", currentWord)
 			outputMessage = outputMessage.replace("$reward", str(currentReward))

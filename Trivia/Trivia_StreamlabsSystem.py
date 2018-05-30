@@ -15,6 +15,7 @@ Version = "1.2.6"
 configFile = "config.json"
 questionsFile = "questions.txt"
 settings = {}
+parth = ""
 
 questionsList = []
 currentQuestion = ""
@@ -28,7 +29,7 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global questionsList, settings 
+	global questionsList, settings, path 
 
 	path = os.path.dirname(__file__)
 	try:
@@ -94,7 +95,7 @@ def OpenQuestionsFile():
 
 
 def Tick():
-	global resetTime, currentQuestion, currentAnswer, currentReward
+	global questionsList, resetTime, currentQuestion, currentAnswer, currentReward
 
 	if (settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"]):
 		currentTime = time.time()
@@ -103,9 +104,16 @@ def Tick():
 			resetTime = currentTime + (settings["questionInterval"] * 60)
 			outputMessage = settings["responseAnnouncement"]
 
-			randomIndex = Parent.GetRandom(0, len(questionsList))
-			currentQuestion = questionsList[randomIndex][0] 
-			currentAnswer = questionsList[randomIndex][1]
+			randomQuestion = questionsList.pop(Parent.GetRandom(0, len(questionsList)))
+			currentQuestion = randomQuestion[0] 
+			currentAnswer = randomQuestion[1]
+
+			if len(questionsList) == 0:
+				try: 
+					with codecs.open(os.path.join(path, questionsFile), encoding="utf-8-sig", mode="r") as file:
+						questionsList = [eval(line.strip()) for line in file if line.strip()]
+				except:
+					questionsList = [["If you see this message save the file as UTF-8","Error"]]
 
 			currentReward = Parent.GetRandom(settings["minReward"], settings["maxReward"])
 			outputMessage = outputMessage.replace("$question", currentQuestion)
