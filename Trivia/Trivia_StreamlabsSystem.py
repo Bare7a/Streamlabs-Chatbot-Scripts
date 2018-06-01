@@ -15,7 +15,7 @@ Version = "1.2.6"
 configFile = "config.json"
 questionsFile = "questions.txt"
 settings = {}
-parth = ""
+path = ""
 
 questionsList = []
 currentQuestion = ""
