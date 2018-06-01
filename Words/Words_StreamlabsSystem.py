@@ -15,7 +15,7 @@ Version = "1.2.6"
 configFile = "config.json"
 wordsFile = "words.txt"
 settings = {}
-parth = ""
+path = ""
 
 wordsList = []
 currentWord = ""
