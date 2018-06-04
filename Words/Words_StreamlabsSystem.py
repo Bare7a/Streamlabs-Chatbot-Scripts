@@ -10,7 +10,7 @@ ScriptName = "Words Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Words Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.6"
+Version = "1.2.8"
 
 configFile = "config.json"
 wordsFile = "words.txt"
@@ -80,9 +80,9 @@ def ReloadSettings(jsonData):
 	return
 
 def OpenReadMe():
-    location = os.path.join(os.path.dirname(__file__), "README.txt")
-    os.startfile(location)
-    return
+	location = os.path.join(os.path.dirname(__file__), "README.txt")
+	os.startfile(location)
+	return
 
 def OpenWordsFile():
 	location = os.path.join(os.path.dirname(__file__), wordsFile)

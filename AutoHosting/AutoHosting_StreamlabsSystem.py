@@ -10,7 +10,7 @@ ScriptName = "Auto Hosting"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Auto Hosting for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.6"
+Version = "1.2.8"
 
 configFile = "config.json"
 settings = {}
@@ -66,7 +66,7 @@ def Execute(data):
 
 	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and Parent.HasPermission(data.User, settings["permission"], "") and (settings["offlineOnly"] and (not Parent.IsLive()) or (not settings["offlineOnly"])):
 		outputMessage = ""
-		userId = data.User			
+		userId = data.User
 		username = data.UserName
 		points = Parent.GetPoints(userId)
 		costs = settings["costs"]
@@ -100,7 +100,7 @@ def Execute(data):
 				addedResponse = settings["addedResponse"]
 				outputMessage = addedResponse
 
-				if settings["saveUserlist"]:					
+				if settings["saveUserlist"]:
 					with open(usersFile, "a") as file:
 						file.write(username)
 

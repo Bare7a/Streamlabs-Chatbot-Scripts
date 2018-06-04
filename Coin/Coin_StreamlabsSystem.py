@@ -9,7 +9,7 @@ ScriptName = "Coin Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Coin Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.6"
+Version = "1.2.8"
 
 configFile = "config.json"
 settings = {}
@@ -114,9 +114,9 @@ def ReloadSettings(jsonData):
 	return
 
 def OpenReadMe():
-    location = os.path.join(os.path.dirname(__file__), "README.txt")
-    os.startfile(location)
-    return
+	location = os.path.join(os.path.dirname(__file__), "README.txt")
+	os.startfile(location)
+	return
 
 def Tick():
 	return
