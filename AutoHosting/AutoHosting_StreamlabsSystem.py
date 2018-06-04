@@ -138,25 +138,28 @@ def Tick():
     currentTime = time.time() 
 
     if(currentTime >= resetTime):
-    	resetTime = currentTime + (settings["hostCountdown"] * 60)
-        userCount = len(userList)
+		resetTime = currentTime + (settings["hostCountdown"] * 60)
+		userCount = len(userList)
 
-        if userCount > 0:
-        	winner = userList[Parent.GetRandom(0, len(userList))]
-        	outputMessage = "/host " + winner
+		if userCount > 0:
+			winner = userList[Parent.GetRandom(0, len(userList))]
+			outputMessage = "/host " + winner
       		
-      		if settings["useBlacklist"]:
-      			blackTime = currentTime + (settings["blacklistCooldown"] * 60)
-      			blackList[winner] = blackTime
+			if settings["useBlacklist"]:
+				blackTime = currentTime + (settings["blacklistCooldown"] * 60)
+				blackList[winner] = blackTime
+		else:
+			outputMessage = "/unhost"
+		
+		userList = []
 
-        	Parent.SendStreamMessage(outputMessage)
-        else:
-        	outputMessage = "/unhost"
-        	Parent.SendStreamMessage(outputMessage)
+		if settings["saveUserlist"]:
+			with open(usersFile,'w'): pass
 
-        userList = []
+		Parent.SendStreamMessage(outputMessage)
+		
         
-	if settings["useBlacklist"] and (currentTime >= delayTime):
+    if settings["useBlacklist"] and (currentTime >= delayTime):
 		delayTime = currentTime + delay
 
 		for key, value in blackList.items():
