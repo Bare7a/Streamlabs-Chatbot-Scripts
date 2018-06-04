@@ -128,42 +128,42 @@ def ReloadSettings(jsonData):
 	return
 
 def OpenReadMe():
-    location = os.path.join(os.path.dirname(__file__), "README.txt")
-    os.startfile(location)
-    return
+	location = os.path.join(os.path.dirname(__file__), "README.txt")
+	os.startfile(location)
+	return
 
 def Tick():
-    global resetTime, delayTime, delay, userList, blackList, settings
+	global resetTime, delayTime, delay, userList, blackList, settings
 
-    currentTime = time.time() 
+	currentTime = time.time() 
 
-    if(currentTime >= resetTime):
-	resetTime = currentTime + (settings["hostCountdown"] * 60)
-	userCount = len(userList)
+	if(currentTime >= resetTime):
+		resetTime = currentTime + (settings["hostCountdown"] * 60)
+		userCount = len(userList)
 
-	if userCount > 0:
-		winner = userList[Parent.GetRandom(0, len(userList))]
-		outputMessage = "/host " + winner
+		if userCount > 0:
+			winner = userList[Parent.GetRandom(0, len(userList))]
+			outputMessage = "/host " + winner
 
-		if settings["useBlacklist"]:
-			blackTime = currentTime + (settings["blacklistCooldown"] * 60)
-			blackList[winner] = blackTime
-	else:
-		outputMessage = "/unhost"
-
-	userList = []
-
-	if settings["saveUserlist"]:
-		with open(usersFile,'w'): pass
-
-	Parent.SendStreamMessage(outputMessage)
+			if settings["useBlacklist"]:
+				blackTime = currentTime + (settings["blacklistCooldown"] * 60)
+				blackList[winner] = blackTime
+		else:
+			outputMessage = "/unhost"
 		
-        
-    if settings["useBlacklist"] and (currentTime >= delayTime):
-	delayTime = currentTime + delay
+		userList = []
 
-	for key, value in blackList.items():
-		if currentTime >= value:
-			blackList.pop(key)
+		if settings["saveUserlist"]:
+			with open(usersFile,'w'): pass
+
+		Parent.SendStreamMessage(outputMessage)
+		
+
+	if settings["useBlacklist"] and (currentTime >= delayTime):
+		delayTime = currentTime + delay
+
+		for key, value in blackList.items():
+			if currentTime >= value:
+				blackList.pop(key)
 
     return
