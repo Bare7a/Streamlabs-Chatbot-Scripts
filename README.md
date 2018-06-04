@@ -3,6 +3,7 @@
 ## [Auto Hosting](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/AutoHosting)
   - Enable/Disable using the command when the stream is online
   - Enable/Disable using a blacklist
+  - Enable/Disable saving userlist to text file
   - Enable/Disable command cost
   - Enable/Disable cooldown / user cooldown
   - Enable/Disable cooldown / user cooldown messages

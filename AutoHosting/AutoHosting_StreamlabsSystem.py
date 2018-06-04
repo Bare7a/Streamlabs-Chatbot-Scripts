@@ -14,6 +14,8 @@ Version = "1.2.6"
 
 configFile = "config.json"
 settings = {}
+usersFile = "users.txt"
+
 userList = []
 blackList = {}
 resetTime = 0
@@ -24,9 +26,11 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global settings
+	global settings, usersFile
 
 	path = os.path.dirname(__file__)
+	usersFile = os.path.join(path, usersFile)
+
 	try:
 		with codecs.open(os.path.join(path, configFile), encoding='utf-8-sig', mode='r') as file:
 			settings = json.load(file, encoding='utf-8-sig')
@@ -36,6 +40,7 @@ def Init():
 			"command": "!hostme",
 			"hostCountdown" : 15,
 			"permission": "Everyone",
+			"saveUserlist": False,
 			"useBlacklist" : False,
 			"blacklistCooldown" : 60,
 			"blacklistResponse" : "$user, you are still in the blacklist! Wait $cd more minutes before writing $command again!",
@@ -51,6 +56,9 @@ def Init():
 			"addedResponse" : "$user, you have been added to the hosting list! Someone will be hosted in $remaining minutes!",
 			"alreadyResponse" : "$user, you are already in the hosting list! Someone will be hosted in $remaining minutes!"
 		}
+
+		if settings["saveUserlist"]:
+			with open(usersFile,'w'): pass
 	return
 
 def Execute(data):
@@ -91,6 +99,11 @@ def Execute(data):
 				userList.append(username)
 				addedResponse = settings["addedResponse"]
 				outputMessage = addedResponse
+
+				if settings["saveUserlist"]:					
+					with open(usersFile, "a") as file:
+						file.write(username)
+
 				if settings["useCosts"]:
 					Parent.RemovePoints(userId, username, costs)
 
@@ -125,25 +138,28 @@ def Tick():
     currentTime = time.time() 
 
     if(currentTime >= resetTime):
-    	resetTime = currentTime + (settings["hostCountdown"] * 60)
-        userCount = len(userList)
+		resetTime = currentTime + (settings["hostCountdown"] * 60)
+		userCount = len(userList)
 
-        if userCount > 0:
-        	winner = userList[Parent.GetRandom(0, len(userList))]
-        	outputMessage = "/host " + winner
+		if userCount > 0:
+			winner = userList[Parent.GetRandom(0, len(userList))]
+			outputMessage = "/host " + winner
       		
       		if settings["useBlacklist"]:
       			blackTime = currentTime + (settings["blacklistCooldown"] * 60)
       			blackList[winner] = blackTime
+		else:
+			outputMessage = "/unhost"
+		
+		userList = []
 
-        	Parent.SendStreamMessage(outputMessage)
-        else:
-        	outputMessage = "/unhost"
-        	Parent.SendStreamMessage(outputMessage)
+		if settings["saveUserlist"]:
+			with open(usersFile,'w'): pass
 
-        userList = []
+		Parent.SendStreamMessage(outputMessage)
+		
         
-	if settings["useBlacklist"] and (currentTime >= delayTime):
+    if settings["useBlacklist"] and (currentTime >= delayTime):
 		delayTime = currentTime + delay
 
 		for key, value in blackList.items():

@@ -30,6 +30,13 @@
         "tooltip": "Set the permission level for the command",
         "group": "General"
     },
+    "saveUserlist": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Save Userlist",
+        "tooltip": "True if you want to save all of the users who are in the hosting queue in users.txt",
+        "group" : "General"
+    },
     "useBlacklist": {
         "type": "checkbox",
         "value": false,
