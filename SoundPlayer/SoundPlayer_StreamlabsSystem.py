@@ -12,20 +12,29 @@ Creator = "Bare7a"
 Version = "1.2.8"
 
 configFile = "config.json"
+costFile = "costlist.json"
 settings = {}
 volume = 0.1
 soundspath = ""
 sounds = {}
 playlist = ""
+costlist = {}
 
 def ScriptToggled(state):
 	return
 
 def Init():
-	global sounds, playlist, soundspath, volume, settings
+	global sounds, playlist, costlist, soundspath, volume, settings
 
 	path = os.path.dirname(__file__)
 	soundspath = path + "\\sounds"
+
+	try:
+		with codecs.open(os.path.join(path, costFile), encoding='utf-8-sig', mode='r') as file:
+			costlist = json.load(file, encoding='utf-8-sig')
+	except:
+		#costlist will be an empty dict, which is ok
+		pass
 
 	try:
 		with codecs.open(os.path.join(path, configFile), encoding='utf-8-sig', mode='r') as file:
@@ -50,13 +59,17 @@ def Init():
 		}
 
 	volume = settings["volume"] / 1000.0
-	soundsList = os.listdir(soundspath)	
+	soundsList = os.listdir(soundspath)
 	playlistArr = []
 
 	for	sound in soundsList:
 		soundFile = sound.rsplit('.', 1)
-		playlistArr.append(soundFile[0]) 
-		sounds[soundFile[0].lower()] = soundFile[1].lower() 
+		soundLower = soundFile[0].lower()
+		if (soundLower in costlist):
+			playlistArr.append(soundFile[0] + " (" + str(costlist[soundLower]) + ")")
+		else:
+			playlistArr.append(soundFile[0] + " (" + str(settings["costs"]) + ")")
+		sounds[soundLower] = soundFile[1].lower()
 
 	playlist = settings["playlistSeparator"].join(playlistArr)
 
@@ -64,11 +77,11 @@ def Init():
 
 def Execute(data):
 	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and data.GetParamCount() == 1 and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
-		userId = data.User			
+		userId = data.User
 		username = data.UserName
 		points = Parent.GetPoints(userId)
 		costs = settings["costs"]
-		
+
 		outputMessage = settings["responsePlaylist"]
 		outputMessage = outputMessage.replace("$cost", str(costs))
 		outputMessage = outputMessage.replace("$user", username)
@@ -81,10 +94,14 @@ def Execute(data):
 
 	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and data.GetParamCount() == 2 and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
 		outputMessage = ""
-		userId = data.User			
+		userId = data.User
 		username = data.UserName
 		points = Parent.GetPoints(userId)
 		costs = settings["costs"]
+		sound = data.GetParam(1).lower()
+
+		if (sound in costlist):
+			costs = costlist[sound]
 
 		if (costs > points):
 			outputMessage = settings["responseNotEnoughPoints"]
@@ -92,21 +109,19 @@ def Execute(data):
 			if settings["useCooldownMessages"]:
 				if Parent.GetCooldownDuration(ScriptName, settings["command"]) > Parent.GetUserCooldownDuration(ScriptName, settings["command"], userId):
 					cdi = Parent.GetCooldownDuration(ScriptName, settings["command"])
-					cd = str(cdi / 60) + ":" + str(cdi % 60).zfill(2) 
+					cd = str(cdi / 60) + ":" + str(cdi % 60).zfill(2)
 					outputMessage = settings["onCooldown"]
 				else:
 					cdi = Parent.GetUserCooldownDuration(ScriptName, settings["command"], userId)
-					cd = str(cdi / 60) + ":" + str(cdi % 60).zfill(2) 
+					cd = str(cdi / 60) + ":" + str(cdi % 60).zfill(2)
 					outputMessage = settings["onUserCooldown"]
 				outputMessage = outputMessage.replace("$cd", cd)
 			else:
 				outputMessage = ""
 		else:
-			sound = data.GetParam(1).lower()
-			
 			if sound in sounds:
 				soundpath = soundspath + "\\" + sound + "." + sounds[sound]
-				if Parent.PlaySound(soundpath, volume): 
+				if Parent.PlaySound(soundpath, volume):
 					Parent.RemovePoints(userId, username, costs)
 
 					if settings["useCooldown"]:
