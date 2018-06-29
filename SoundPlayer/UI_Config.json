@@ -40,6 +40,13 @@
         "tooltip": "Set the cost for this command.",
         "group": "General"
     },
+    "useCostList": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Use Cost List",
+        "tooltip": "Use the per sound cost list. You must manually edit the costlist.yaml file.",
+        "group": "General"
+    },
     "useCooldown": {
         "type": "checkbox",
         "value": true,
