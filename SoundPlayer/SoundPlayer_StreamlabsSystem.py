@@ -46,6 +46,7 @@ def Init():
 			"permission": "Everyone",
 			"volume": 50.0,
 			"costs": 100,
+			"useCostList": False,
 			"useCooldown": True,
 			"useCooldownMessages": True,
 			"cooldown": 600,
@@ -65,7 +66,7 @@ def Init():
 	for	sound in soundsList:
 		soundFile = sound.rsplit('.', 1)
 		soundLower = soundFile[0].lower()
-		if (soundLower in costlist):
+		if (soundLower in costlist) and (settings["useCostList"]):
 			playlistArr.append(soundFile[0] + " (" + str(costlist[soundLower]) + ")")
 		else:
 			playlistArr.append(soundFile[0] + " (" + str(settings["costs"]) + ")")
@@ -100,7 +101,7 @@ def Execute(data):
 		costs = settings["costs"]
 		sound = data.GetParam(1).lower()
 
-		if (sound in costlist):
+		if (sound in costlist) and (settings["useCostList"]):
 			costs = costlist[sound]
 
 		if (costs > points):
