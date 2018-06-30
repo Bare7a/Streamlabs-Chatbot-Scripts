@@ -19,7 +19,7 @@ path = ""
 
 questionsList = []
 currentQuestion = ""
-currentAnswer = ""
+currentAnswers = []
 currentReward = 0
 
 resetTime = 0
@@ -51,14 +51,14 @@ def Init():
 		with codecs.open(os.path.join(path, questionsFile), encoding="utf-8-sig", mode="r") as file:
 			questionsList = [eval(line.strip()) for line in file if line.strip()]
 	except:
-		questionsList = [["If you see this message save the file as UTF-8","Error"]]
+		questionsList = [["If you see this message save the file as UTF-8 and/or escape the \" character with \\","Error"]]
 	
 	return
 
 def Execute(data):
-	global currentQuestion, currentAnswer, currentReward
+	global currentQuestion, currentAnswers, currentReward
 
-	if data.IsChatMessage() and ((data.Message == currentAnswer) or (settings["ignoreCaseSensitivity"] and (data.Message.lower() == currentAnswer.lower()))) and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
+	if data.IsChatMessage() and ((data.Message in currentAnswers) or (settings["ignoreCaseSensitivity"] and (data.Message.lower() in [a.lower() for a in currentAnswers]))) and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
 		userId = data.User			
 		username = data.UserName
 
@@ -68,12 +68,12 @@ def Execute(data):
 
 		outputMessage = outputMessage.replace("$user", username)
 		outputMessage = outputMessage.replace("$question", currentQuestion)
-		outputMessage = outputMessage.replace("$answer", currentAnswer)
+		outputMessage = outputMessage.replace("$answer", data.Message.title())
 		outputMessage = outputMessage.replace("$reward", str(currentReward))
 		outputMessage = outputMessage.replace("$currency", Parent.GetCurrencyName())
 
 		currentQuestion = ""
-		currentAnswer = ""
+		currentAnswers = []
 		currentReward = 0
 
 		Parent.SendStreamMessage(outputMessage)
@@ -95,7 +95,7 @@ def OpenQuestionsFile():
 
 
 def Tick():
-	global questionsList, resetTime, currentQuestion, currentAnswer, currentReward
+	global questionsList, resetTime, currentQuestion, currentAnswers, currentReward
 
 	if (settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"]):
 		currentTime = time.time()
@@ -105,8 +105,8 @@ def Tick():
 			outputMessage = settings["responseAnnouncement"]
 
 			randomQuestion = questionsList.pop(Parent.GetRandom(0, len(questionsList)))
-			currentQuestion = randomQuestion[0] 
-			currentAnswer = randomQuestion[1]
+			currentQuestion = randomQuestion.pop(0) 
+			currentAnswers = randomQuestion
 
 			if len(questionsList) == 0:
 				try: 
@@ -117,7 +117,6 @@ def Tick():
 
 			currentReward = Parent.GetRandom(settings["minReward"], settings["maxReward"])
 			outputMessage = outputMessage.replace("$question", currentQuestion)
-			outputMessage = outputMessage.replace("$answer", currentAnswer)
 			outputMessage = outputMessage.replace("$reward", str(currentReward))
 			outputMessage = outputMessage.replace("$currency", Parent.GetCurrencyName())
 

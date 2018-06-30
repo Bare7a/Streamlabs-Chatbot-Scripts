@@ -1,2 +1,3 @@
 ["What is the abriviation of League of Legends", "LoL"]
-["What is the abriviation of Counter-Strike", "CS"]
+["What is the abriviation of Counter-Strike", "cs"]
+["What is between one and three", "2", "two"]

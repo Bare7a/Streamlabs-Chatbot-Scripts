@@ -6,6 +6,7 @@
 ===============================================================================
  - Enable/Disable the minigame when the stream is offline
  - Enable/Disable case sensitivity for the given answer
+ - Multiple answers support
  - Customisable questions/answers list
  - Customisable permission for participating
  - Customisable winning rewards (min-max)
