@@ -39,7 +39,8 @@ def Init():
 		settings = {
 			"liveOnly": True,
 			"permission": "Everyone",
-			"ignoreCaseSensitivity": True,  
+			"ignoreCaseSensitivity": True,
+			"separator": "##",  
 			"minReward": 1,
 			"maxReward": 10,
 			"questionInterval": 10,			
@@ -49,9 +50,9 @@ def Init():
 
 	try: 
 		with codecs.open(os.path.join(path, questionsFile), encoding="utf-8-sig", mode="r") as file:
-			questionsList = [eval(line.strip()) for line in file if line.strip()]
+			questionsList = [[word.strip() for word in line.split(settings["separator"])] for line in file if line.strip()]
 	except:
-		questionsList = [["If you see this message save the file as UTF-8 and/or escape the \" character with \\","Error"]]
+		questionsList = [["If you see this message save the file as UTF-8","Error"]]
 	
 	return
 
@@ -111,7 +112,7 @@ def Tick():
 			if len(questionsList) == 0:
 				try: 
 					with codecs.open(os.path.join(path, questionsFile), encoding="utf-8-sig", mode="r") as file:
-						questionsList = [eval(line.strip()) for line in file if line.strip()]
+						questionsList = [[word.strip() for word in line.split(settings["separator"])] for line in file if line.strip()]
 				except:
 					questionsList = [["If you see this message save the file as UTF-8","Error"]]
 

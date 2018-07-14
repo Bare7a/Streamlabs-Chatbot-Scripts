@@ -23,6 +23,13 @@
         "tooltip": "True if you want the word case sensitivity to be ignored when giving an answer",
         "group" : "General"
     },
+    "separator": {
+        "type": "textbox",
+        "value": "##",
+        "label": "Separator",
+        "tooltip": "The characters used to seperate the questions and answers",
+        "group" : "General"
+    },
     "OpenQuestionsFile": {
         "type": "button",
         "label": "Open Questions File",
