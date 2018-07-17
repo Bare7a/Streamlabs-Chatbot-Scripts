@@ -45,11 +45,18 @@ def Init():
 			"wonResponse": "$user wrote $word first and won $reward $currency!"
 		}
 
+	wordsLocation = os.path.join(path, wordsFile) 
+
 	try: 
-		with codecs.open(os.path.join(path, wordsFile),encoding="utf-8-sig", mode="r") as file:
+		with codecs.open(wordsLocation, encoding="utf-8-sig", mode="r") as file:
 			wordsList = [line.strip() for line in file if line.strip()]
 	except:
-		wordsList = ["If you see this message save the file as UTF-8"]
+		if os.path.isfile(wordsLocation): 
+			wordsList = ["If you see this message save the file as UTF-8"]
+		else: 
+			with codecs.open(wordsLocation, encoding="utf-8-sig", mode="w+") as file:
+				file.write('Put one word/message per line')
+				wordsList = ['Open your "words.txt" file to add your own words"']
 	
 	return
 

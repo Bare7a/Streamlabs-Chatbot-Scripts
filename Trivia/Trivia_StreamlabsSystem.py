@@ -48,11 +48,19 @@ def Init():
 			"responseWon": "$user answered the question first - $answer and won $reward $currency!"
 		}
 
+	questionsLocation = os.path.join(path, questionsFile)
+
 	try: 
-		with codecs.open(os.path.join(path, questionsFile), encoding="utf-8-sig", mode="r") as file:
+		with codecs.open(questionsLocation, encoding="utf-8-sig", mode="r") as file:
 			questionsList = [[word.strip() for word in line.split(settings["separator"])] for line in file if line.strip()]
 	except:
-		questionsList = [["If you see this message save the file as UTF-8","Error"]]
+		if os.path.isfile(questionsLocation): 
+			questionsList = ["If you see this message save the file as UTF-8"]
+		else: 
+			with codecs.open(questionsLocation, encoding="utf-8-sig", mode="w+") as file:
+				file.write('What color is the grass? ' + settings['separator'] + ' green\r\n');
+				file.write('What is between 1 and 3? ' + settings['separator'] + ' 2 ' + settings['separator'] + ' two')
+				questionsList = [['Open your "questions.txt" file to add your own questions', '_']]
 	
 	return
 
