@@ -131,7 +131,7 @@
     "alreadyResponse": {
         "type": "textbox",
         "value": "$user, you are already in the hosting list! Someone will be hosted in $remaining minutes!",
-        "label": "Aldready in the list response",
+        "label": "Already in the list response",
         "tooltip": "Message sent when the user tries to get in the userlist when he is already there",
         "group": "Responses"
     },
