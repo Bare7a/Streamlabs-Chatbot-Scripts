@@ -59,12 +59,12 @@ def Init():
 	
 	if settings["saveUserlist"]:
 		try: 
-			with codecs.open(usersFile, encoding="utf-8-sig", mode="r") as file:
-				userList = [line.strip() for line in file if line.strip()]
+			with codecs.open(usersFile, encoding="utf-8-sig", mode="w") as file:
+				file.write("")
 		except:
 			with codecs.open(usersFile, encoding="utf-8-sig", mode="w") as file:
 				file.write("")
-				
+									
 	return
 
 def Execute(data):
