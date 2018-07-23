@@ -26,7 +26,7 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global settings, usersFile
+	global settings, usersFile, userList
 
 	path = os.path.dirname(__file__)
 	usersFile = os.path.join(path, usersFile)
@@ -56,9 +56,15 @@ def Init():
 			"addedResponse" : "$user, you have been added to the hosting list! Someone will be hosted in $remaining minutes!",
 			"alreadyResponse" : "$user, you are already in the hosting list! Someone will be hosted in $remaining minutes!"
 		}
-
-		if settings["saveUserlist"]:
-			with open(usersFile,'w'): pass
+	
+	if settings["saveUserlist"]:
+		try: 
+			with codecs.open(usersFile, encoding="utf-8-sig", mode="r") as file:
+				userList = [line.strip() for line in file if line.strip()]
+		except:
+			with codecs.open(usersFile, encoding="utf-8-sig", mode="w") as file:
+				file.write("")
+				
 	return
 
 def Execute(data):
@@ -102,7 +108,7 @@ def Execute(data):
 
 				if settings["saveUserlist"]:
 					with open(usersFile, "a") as file:
-						file.write(username)
+						file.write(username + "\n")
 
 				if settings["useCosts"]:
 					Parent.RemovePoints(userId, username, costs)
@@ -154,7 +160,8 @@ def Tick():
 		userList = []
 
 		if settings["saveUserlist"]:
-			with open(usersFile,'w'): pass
+			with codecs.open(usersFile, encoding="utf-8-sig", mode="w") as file:
+				file.write("")
 
 		Parent.SendStreamMessage(outputMessage)
 		
