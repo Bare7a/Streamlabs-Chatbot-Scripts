@@ -10,7 +10,7 @@ ScriptName = "Trivia Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Trivia Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.8"
+Version = "1.3.0"
 
 configFile = "config.json"
 questionsFile = "questions.txt"
@@ -43,9 +43,12 @@ def Init():
 			"separator": "##",  
 			"minReward": 1,
 			"maxReward": 10,
-			"questionInterval": 10,			
+			"minQuestionInterval": 10,			
+			"maxQuestionInterval": 20,			
 			"responseAnnouncement": "Win $reward $currency by answering: $question",
-			"responseWon": "$user answered the question first - $answer and won $reward $currency!"
+			"responseWon": "$user answered the question first - $answer and won $reward $currency!",
+			"showRightAnswer": True,
+			"responseNobody": "The right answer for: $question was $answer"
 		}
 
 	questionsLocation = os.path.join(path, questionsFile)
@@ -58,7 +61,7 @@ def Init():
 			questionsList = ["If you see this message save the file as UTF-8"]
 		else: 
 			with codecs.open(questionsLocation, encoding="utf-8-sig", mode="w+") as file:
-				file.write('What color is the grass? ' + settings['separator'] + ' green\r\n');
+				file.write('What color is the grass? ' + settings['separator'] + ' green\r\n')
 				file.write('What is between 1 and 3? ' + settings['separator'] + ' 2 ' + settings['separator'] + ' two')
 				questionsList = [['Open your "questions.txt" file to add your own questions', '_']]
 	
@@ -110,7 +113,14 @@ def Tick():
 		currentTime = time.time()
 
 		if(currentTime >= resetTime):
-			resetTime = currentTime + (settings["questionInterval"] * 60)
+			resetTime = currentTime + Parent.GetRandom((settings["minQuestionInterval"] * 60), (settings["maxQuestionInterval"] * 60) + 1)
+		
+			if settings["showRightAnswer"] and (len(currentAnswers) != 0):
+				outputMessage = settings["responseNobody"]
+				outputMessage = outputMessage.replace("$question", currentQuestion)
+				outputMessage = outputMessage.replace("$answer", currentAnswers[0])
+				Parent.SendStreamMessage(outputMessage)
+
 			outputMessage = settings["responseAnnouncement"]
 
 			randomQuestion = questionsList.pop(Parent.GetRandom(0, len(questionsList)))

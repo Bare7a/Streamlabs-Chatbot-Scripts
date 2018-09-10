@@ -52,11 +52,18 @@
         "tooltip": "Maximum ammount the user wins for writing the correct answer first",
         "group" : "General"
     },
-    "questionInterval": {
+    "minQuestionInterval": {
         "type": "numberbox",
         "value": 10,
-        "label": "Interval in minutes",
-        "tooltip": "Interval in minutes before switching the question",
+        "label": "Min interval in minutes",
+        "tooltip": "Minimum interval in minutes before switching the question",
+        "group" : "General"
+    },
+    "maxQuestionInterval": {
+        "type": "numberbox",
+        "value": 20,
+        "label": "Max interval in minutes",
+        "tooltip": "Maximum interval in minutes before switching the question",
         "group" : "General"
     },
     "responseAnnouncement": {
@@ -71,6 +78,20 @@
         "value": "$user answered the question first - $answer and won $reward $currency!",
         "label": "User wins message",
         "tooltip": "Message that will be posted when the user writes the answer first\r\n $answer = The answer\r\n $question = The question\r\n $user = Username\r\n $reward = Winning reward\r\n $currency = Name of Currency",
+        "group" : "Response Messages"
+    },
+    "showRightAnswer": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Enable nobody answered message",
+        "tooltip": "True if you want it to show the right answer if nobody answered the question",
+        "group" : "Response Messages"
+    },
+    "responseNobody": {
+        "type": "textbox",
+        "value": "The right answer for: $question was $answer",
+        "label": "Nobody answered message",
+        "tooltip": "Message that will be posted when nobody writes the right answer \r\n $answer = The answer\r\n $question = The question",
         "group" : "Response Messages"
     },
     "openReadMe": {

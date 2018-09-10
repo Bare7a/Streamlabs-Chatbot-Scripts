@@ -45,11 +45,18 @@
         "tooltip": "Maximum ammount the user wins for writing the word first",
         "group" : "General"
     },
-    "wordInterval": {
+    "minWordInterval": {
         "type": "numberbox",
         "value": 10,
-        "label": "Interval in minutes",
-        "tooltip": "Interval in minutes before switching the word",
+        "label": "Min interval in minutes",
+        "tooltip": "Minimum interval in minutes before switching the word",
+        "group" : "General"
+    },
+    "maxWordInterval": {
+        "type": "numberbox",
+        "value": 20,
+        "label": "Max interval in minutes",
+        "tooltip": "Maximum interval in minutes before switching the word",
         "group" : "General"
     },
     "responseAnnouncement": {

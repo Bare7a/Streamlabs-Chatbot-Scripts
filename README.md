@@ -68,7 +68,7 @@
   - Customisable cooldown / user cooldown timers 
   - Customisable response messages
 
- ## [Steal Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Steal)
+## [Steal Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Steal)
   - Enable/Disable using the command when the stream is offline
   - Enable/Disable cooldown / user cooldown
   - Enable/Disable cooldown / user cooldown messages
@@ -93,11 +93,12 @@
 ## [Trivia Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Trivia)
   - Enable/Disable the minigame when the stream is offline
   - Enable/Disable case sensitivity for the given answer
+  - Enable/Disable showing the right answer if nobody answered the question
   - Multiple answers support
   - Customisable questions/answers list
   - Customisable permission for participating
   - Customisable winning rewards (min-max)
-  - Customisable timers for switching the questions
+  - Customisable timers for switching the questions (min-max)
   - Customisable response messages
 
 ## [Welcome Announcer](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/WelcomeAnnouncer)
@@ -116,5 +117,5 @@
  - Customisable words list
  - Customisable permission for participating
  - Customisable winning rewards (min-max)
- - Customisable timers for switching the words
+ - Customisable timers for switching the words (min-max)
  - Customisable response messages

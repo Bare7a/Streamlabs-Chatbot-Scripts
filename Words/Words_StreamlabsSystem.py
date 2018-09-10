@@ -10,7 +10,7 @@ ScriptName = "Words Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Words Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.8"
+Version = "1.3.0"
 
 configFile = "config.json"
 wordsFile = "words.txt"
@@ -40,7 +40,8 @@ def Init():
 			"ignoreCaseSensitivity": True,  
 			"minReward": 1,
 			"maxReward": 10,
-			"wordInterval": 10,			
+			"minWordInterval": 10,
+			"maxWordInterval": 20,			
 			"responseAnnouncement": "Whoever writes $word first gets $reward $currency!",
 			"wonResponse": "$user wrote $word first and won $reward $currency!"
 		}
@@ -104,7 +105,7 @@ def Tick():
 		currentTime = time.time()
 
 		if(currentTime >= resetTime):
-			resetTime = currentTime + (settings["wordInterval"] * 60)
+			resetTime = currentTime + Parent.GetRandom((settings["minWordInterval"] * 60), (settings["maxWordInterval"] * 60) + 1)
 			outputMessage = settings["responseAnnouncement"]
 
 			currentReward = Parent.GetRandom(settings["minReward"], settings["maxReward"])

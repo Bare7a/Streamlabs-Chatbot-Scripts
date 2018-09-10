@@ -1,6 +1,6 @@
 ===============================================================================
  Name: 		Words Minigame for Streamlabs Bot
- Version: 	1.2.8
+ Version: 	1.3.0
  Creator: 	Bare7a
  Website:	https://github.com/Bare7a/Streamlabs-Chatbot-Scripts
 ===============================================================================
@@ -9,6 +9,6 @@
  - Customisable words list
  - Customisable permission for participating
  - Customisable winning rewards (min-max)
- - Customisable timers for switching the words
+ - Customisable timers for switching the words (min-max)
  - Customisable response messages
 ===============================================================================
