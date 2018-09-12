@@ -1,2 +1,0 @@
-﻿What color is the grass? ## green
-What is between 1 and 3? ## 2 ## two
