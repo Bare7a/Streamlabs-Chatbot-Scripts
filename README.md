@@ -60,14 +60,14 @@
   - Customisable response messages
 
 ## [Simple TTS](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/SimpleTTS)
- - Enable/Disable using the command when the stream is offline
- - Enable/Disable cooldown / user cooldown
- - Enable/Disable cooldown / user cooldown messages
- - Customisable command name
- - Customisable voices, volume, speech rate
- - Customisable permission for using the command
- - Customisable cooldown / user cooldown timers 
- - Customisable response messages
+  - Enable/Disable using the command when the stream is offline
+  - Enable/Disable cooldown / user cooldown
+  - Enable/Disable cooldown / user cooldown messages
+  - Customisable command name
+  - Customisable voices, volume, speech rate
+  - Customisable permission for using the command
+  - Customisable cooldown / user cooldown timers 
+  - Customisable response messages
 
 ## [Slots Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Slots)
   - Enable/Disable using the command when the stream is offline
@@ -92,7 +92,7 @@
   - Customisable permission for using the command
   - Customisable cooldown / user cooldown timers 
   - Customisable response messages
-  
+
 ## [Sound Player](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/SoundPlayer)
   - Enable/Disable using the command when the stream is offline
   - Enable/Disable cooldown / user cooldown
