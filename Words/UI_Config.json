@@ -23,26 +23,11 @@
         "tooltip": "True if you want the word case sensitivity to be ignored when giving an answer",
         "group" : "General"
     },
-    "OpenWordsFile": {
-        "type": "button",
-        "label": "Open Words File",
-        "tooltip": "Opens 'words.txt' that contains all words seperated by new line.",
-        "function": "OpenWordsFile",
-        "wsevent": "",
-        "group" : "General"
-    },
-    "minReward": {
-        "type": "numberbox",
-        "value": 1,
-        "label": "Min reward",
-        "tooltip": "Minimum ammount the user wins for writing the word first",
-        "group" : "General"
-    },
-    "maxReward": {
-        "type": "numberbox",
-        "value": 10,
-        "label": "Max reward",
-        "tooltip": "Maximum ammount the user wins for writing the word first",
+    "newWordOnAnswer": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Switch words fast",
+        "tooltip": "True if you want it show a new word 10 seconds after someone writes the current word instead of waiting for the remaining cycle time",
         "group" : "General"
     },
     "minWordInterval": {
@@ -58,6 +43,28 @@
         "label": "Max interval in minutes",
         "tooltip": "Maximum interval in minutes before switching the word",
         "group" : "General"
+    },
+    "OpenWordsFile": {
+        "type": "button",
+        "label": "Open Words File",
+        "tooltip": "Opens 'words.txt' that contains all words seperated by new line.",
+        "function": "OpenWordsFile",
+        "wsevent": "",
+        "group" : "General"
+    },
+    "minReward": {
+        "type": "numberbox",
+        "value": 1,
+        "label": "Min reward",
+        "tooltip": "Minimum ammount the user wins for writing the word first",
+        "group" : "Currency"
+    },
+    "maxReward": {
+        "type": "numberbox",
+        "value": 10,
+        "label": "Max reward",
+        "tooltip": "Maximum ammount the user wins for writing the word first",
+        "group" : "Currency"
     },
     "responseAnnouncement": {
         "type": "textbox",

@@ -10,7 +10,7 @@ ScriptName = "Trivia Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Trivia Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.3.0"
+Version = "1.3.2"
 
 configFile = "config.json"
 questionsFile = "questions.txt"
@@ -40,6 +40,7 @@ def Init():
 			"liveOnly": True,
 			"permission": "Everyone",
 			"ignoreCaseSensitivity": True,
+			"newQuestionOnAnswer" : False,
 			"separator": "##",  
 			"minReward": 1,
 			"maxReward": 10,
@@ -68,7 +69,7 @@ def Init():
 	return
 
 def Execute(data):
-	global currentQuestion, currentAnswers, currentReward
+	global currentQuestion, currentAnswers, currentReward, resetTime
 
 	if data.IsChatMessage() and ((data.Message in currentAnswers) or (settings["ignoreCaseSensitivity"] and (data.Message.lower() in [a.lower() for a in currentAnswers]))) and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
 		userId = data.User			
@@ -87,6 +88,9 @@ def Execute(data):
 		currentQuestion = ""
 		currentAnswers = []
 		currentReward = 0
+
+		if settings["newQuestionOnAnswer"]:
+			resetTime = time.time()	+ 10
 
 		Parent.SendStreamMessage(outputMessage)
 	return

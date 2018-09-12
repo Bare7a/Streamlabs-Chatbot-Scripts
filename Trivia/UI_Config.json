@@ -23,6 +23,27 @@
         "tooltip": "True if you want the word case sensitivity to be ignored when giving an answer",
         "group" : "General"
     },
+    "newQuestionOnAnswer": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Switch questions fast",
+        "tooltip": "True if you want it show a new question 10 seconds after someone guesses the answer instead of waiting for the remaining cycle time",
+        "group" : "General"
+    },
+    "minQuestionInterval": {
+        "type": "numberbox",
+        "value": 10,
+        "label": "Min interval in minutes",
+        "tooltip": "Minimum interval in minutes before switching the question",
+        "group" : "General"
+    },
+    "maxQuestionInterval": {
+        "type": "numberbox",
+        "value": 20,
+        "label": "Max interval in minutes",
+        "tooltip": "Maximum interval in minutes before switching the question",
+        "group" : "General"
+    },
     "separator": {
         "type": "textbox",
         "value": "##",
@@ -43,28 +64,14 @@
         "value": 1,
         "label": "Min reward",
         "tooltip": "Minimum ammount the user wins for writing the correct answer first",
-        "group" : "General"
+        "group" : "Currency"
     },
     "maxReward": {
         "type": "numberbox",
         "value": 10,
         "label": "Max reward",
         "tooltip": "Maximum ammount the user wins for writing the correct answer first",
-        "group" : "General"
-    },
-    "minQuestionInterval": {
-        "type": "numberbox",
-        "value": 10,
-        "label": "Min interval in minutes",
-        "tooltip": "Minimum interval in minutes before switching the question",
-        "group" : "General"
-    },
-    "maxQuestionInterval": {
-        "type": "numberbox",
-        "value": 20,
-        "label": "Max interval in minutes",
-        "tooltip": "Maximum interval in minutes before switching the question",
-        "group" : "General"
+        "group" : "Currency"
     },
     "responseAnnouncement": {
         "type": "textbox",

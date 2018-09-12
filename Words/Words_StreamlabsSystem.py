@@ -10,7 +10,7 @@ ScriptName = "Words Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Words Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.3.0"
+Version = "1.3.2"
 
 configFile = "config.json"
 wordsFile = "words.txt"
@@ -37,7 +37,8 @@ def Init():
 		settings = {
 			"liveOnly": True,
 			"permission": "Everyone",
-			"ignoreCaseSensitivity": True,  
+			"ignoreCaseSensitivity": True, 
+			"newWordOnAnswer" : False, 
 			"minReward": 1,
 			"maxReward": 10,
 			"minWordInterval": 10,
@@ -62,7 +63,7 @@ def Init():
 	return
 
 def Execute(data):
-	global currentWord, currentReward
+	global currentWord, currentReward, resetTime
 
 	if data.IsChatMessage() and ((data.Message == currentWord) or (settings["ignoreCaseSensitivity"] and (data.Message.lower() == currentWord.lower()))) and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
 		userId = data.User			
@@ -79,6 +80,9 @@ def Execute(data):
 
 		currentWord = ""
 		currentReward = 0
+
+		if settings["newWordOnAnswer"]:
+			resetTime = time.time()	+ 10
 
 		Parent.SendStreamMessage(outputMessage)
 	return

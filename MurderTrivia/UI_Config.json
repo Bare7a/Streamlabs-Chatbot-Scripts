@@ -1,0 +1,146 @@
+{
+    "output_file": "config.json",
+
+    "liveOnly": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Live Only Mode",
+        "tooltip": "True if you want it to only run when you are live",
+        "group" : "General"
+    },
+    "command": {
+        "type": "textbox",
+        "value": "!answer",
+        "label": "Command",
+        "tooltip": "Name of the command",
+        "group": "General"
+    },
+    "permission": {
+        "type": "dropdown",
+        "value": "Everyone",
+        "items": ["Everyone","Regular","Subscriber","Moderator","Editor"],
+        "label": "Permission level",
+        "tooltip": "Set the permission level for participating",
+        "group" : "General"
+    },
+    "ignoreCaseSensitivity": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Ignore Case Sensitivity",
+        "tooltip": "True if you want the word case sensitivity to be ignored when giving an answer",
+        "group" : "General"
+    },
+    "newQuestionOnAnswer": {
+        "type": "checkbox",
+        "value": false,
+        "label": "Switch questions fast",
+        "tooltip": "True if you want it show a new question 10 seconds after someone guesses the answer instead of waiting for the remaining cycle time",
+        "group" : "General"
+    },
+    "minQuestionInterval": {
+        "type": "numberbox",
+        "value": 10,
+        "label": "Min interval in minutes",
+        "tooltip": "Minimum interval in minutes before switching the question",
+        "group" : "General"
+    },
+    "maxQuestionInterval": {
+        "type": "numberbox",
+        "value": 20,
+        "label": "Max interval in minutes",
+        "tooltip": "Maximum interval in minutes before switching the question",
+        "group" : "General"
+    },
+    "separator": {
+        "type": "textbox",
+        "value": "##",
+        "label": "Separator",
+        "tooltip": "The characters used to seperate the questions and answers",
+        "group" : "General"
+    },
+    "OpenQuestionsFile": {
+        "type": "button",
+        "label": "Open Questions File",
+        "tooltip": "Opens 'questions.txt' that contains all questions and answers seperated by new line.",
+        "function": "OpenQuestionsFile",
+        "wsevent": "",
+        "group" : "General"
+    },
+   "costs": {
+        "type": "numberbox",
+        "value": 5,
+        "label": "Cost to play the game",
+        "tooltip": "Set the default cost for this command.",
+        "group": "Currency"
+    },
+    "minReward": {
+        "type": "numberbox",
+        "value": 1,
+        "label": "Min reward",
+        "tooltip": "Minimum ammount the user wins for writing the correct answer first",
+        "group" : "Currency"
+    },
+    "maxReward": {
+        "type": "numberbox",
+        "value": 10,
+        "label": "Max reward",
+        "tooltip": "Maximum ammount the user wins for writing the correct answer first",
+        "group" : "Currency"
+    },
+    "responseAnnouncement": {
+        "type": "textbox",
+        "value": "Win $reward $currency by answering: $question",
+        "label": "Word announcement message",
+        "tooltip": "Message that will be posted when a new question is announced\r\n $question = The question\r\n $reward = Winning reward\r\n $cost = Cost to play\r\n $currency = Name of Currency",
+        "group" : "Response Messages"
+    },
+    "responseWon": {
+        "type": "textbox",
+        "value": "$user answered the question first - $answer and won $reward $currency!",
+        "label": "User wins message",
+        "tooltip": "Message that will be posted when the user writes the answer first\r\n $answer = The answer\r\n $question = The question\r\n $user = Username\r\n $reward = Winning reward\r\n $cost = Cost to play\r\n $currency = Name of Currency",
+        "group" : "Response Messages"
+    },
+    "responseLost": {
+        "type": "textbox",
+        "value": "$user gave the wrong answer - $answer and lost $cost $currency!",
+        "label": "User lost message",
+        "tooltip": "Message that will be posted when the user writes a wrong answer\r\n $answer = The answer\r\n $question = The question\r\n $user = Username\r\n $reward = Winning reward\r\n $cost = Cost to play\r\n $currency = Name of Currency",
+        "group" : "Response Messages"
+    },
+    "responseNotEnoughPoints": {
+        "type": "textbox",
+        "value": "$user you need $cost $currency to play Murder Trivia.",
+        "label": "Not enough points",
+        "tooltip": "Message that will be posted if the user doesn't have enough points.\r\n $answer = The answer\r\n $question = The question\r\n $user = Username\r\n $reward = Winning reward\r\n $cost = Cost to play\r\n $currency = Name of Currency",
+        "group": "Response Messages"
+    },
+    "responseNotStarted": {
+        "type": "textbox",
+        "value": "$user the trivia is not ready yet, get back later for more killing!",
+        "label": "Not started",
+        "tooltip": "Message that will be posted if there isn't an active question right now.\r\n $answer = The answer\r\n $question = The question\r\n $user = Username\r\n $reward = Winning reward\r\n $cost = Cost to play\r\n $currency = Name of Currency",
+        "group": "Response Messages"
+    },
+    "showRightAnswer": {
+        "type": "checkbox",
+        "value": true,
+        "label": "Enable nobody answered message",
+        "tooltip": "True if you want it to show the right answer if nobody answered the question",
+        "group" : "Response Messages"
+    },
+    "responseNobody": {
+        "type": "textbox",
+        "value": "The right answer for: $question was $answer",
+        "label": "Nobody answered message",
+        "tooltip": "Message that will be posted when nobody writes the right answer \r\n $answer = The answer\r\n $question = The question\r\n $reward = Winning reward\r\n $cost = Cost to play\r\n $currency = Name of Currency",
+        "group" : "Response Messages"
+    },
+    "openReadMe": {
+        "type": "button",
+        "label": "Open 'Readme Me' file",
+        "tooltip": "Opens the 'Readme.txt' for this script.",
+        "function": "OpenReadMe",
+        "wsevent": ""
+    }
+}
