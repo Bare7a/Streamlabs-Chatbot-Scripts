@@ -26,7 +26,7 @@
     "newQuestionOnAnswer": {
         "type": "checkbox",
         "value": false,
-        "label": "Switch questions fast",
+        "label": "Switch Questions Fast",
         "tooltip": "True if you want it show a new question 10 seconds after someone guesses the answer instead of waiting for the remaining cycle time",
         "group" : "General"
     },

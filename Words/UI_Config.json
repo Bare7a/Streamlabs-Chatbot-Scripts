@@ -26,7 +26,7 @@
     "newWordOnAnswer": {
         "type": "checkbox",
         "value": false,
-        "label": "Switch words fast",
+        "label": "Switch Words Fast",
         "tooltip": "True if you want it show a new word 10 seconds after someone writes the current word instead of waiting for the remaining cycle time",
         "group" : "General"
     },
