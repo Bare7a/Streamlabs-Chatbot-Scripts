@@ -10,7 +10,7 @@ ScriptName = "Raffle Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Raffle Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.8"
+Version = "1.3.0"
 
 configFile = "config.json"
 settings = {}
@@ -70,7 +70,7 @@ def Execute(data):
 			outputMessage = settings["notOpenedResponse"]
 		elif (bet > points) or (bet < settings["minBet"]) or (bet > settings["maxBet"]):
 			outputMessage = settings["wrongAmmountResponse"] 
-		elif username in userList:
+		elif any(username in user[1] for user in userList):
 			outputMessage = settings["alreadyBettedResponse"] 
 		else:
 			Parent.RemovePoints(userId, username, bet)
