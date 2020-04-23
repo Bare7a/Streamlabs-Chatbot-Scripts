@@ -10,7 +10,7 @@ ScriptName = "Raffle Minigame"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Raffle Minigame for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.3.0"
+Version = "1.3.2"
 
 configFile = "config.json"
 settings = {}
@@ -100,6 +100,9 @@ def OpenReadMe():
 
 def Tick():
 	global startTime, bettingTime, isBettingOpened, userList, pot
+	
+	if not (settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"]):
+		return
 
 	currentTime = time.time() 
 
