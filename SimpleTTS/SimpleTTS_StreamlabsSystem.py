@@ -9,10 +9,12 @@ ScriptName = "Simple TTS"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Simple TTS for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.2.8"
+Version = "1.3.0"
 
 configFile = "config.json"
+blackListFile = "BlackList.txt"
 settings = {}
+blackList = []
 commandLength = 0
 voiceParams = ""
 
@@ -20,7 +22,7 @@ def ScriptToggled(state):
 	return
 
 def Init():
-	global settings, commandLength, voiceParams
+	global settings, blackList, commandLength, voiceParams
 
 	path = os.path.dirname(__file__)
 	try:
@@ -44,6 +46,10 @@ def Init():
 			"responseNotEnoughPoints": "$user you need $cost $currency to use $command.",
 		}
 	
+	blackListLocation = os.path.join(path, blackListFile)
+	with codecs.open(blackListLocation, encoding="utf-8-sig", mode="r") as file:
+		blackList = [line.strip().upper() for line in file]
+	
 	commandLength = len(settings["command"]) + 1
 	voiceParams = "cscript " + path + "\\speech.vbs " + str(int(settings["voiceVolume"])) + " " + str(int(settings["voiceRate"]))
 
@@ -53,7 +59,7 @@ def Init():
 		voiceParams = voiceParams + " 1 "	
 
 def Execute(data):
-	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])):
+	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])) and not any(word in message.replace(' ', '').upper() for word in blackList):
 		outputMessage = ""
 		userId = data.User			
 		username = data.UserName

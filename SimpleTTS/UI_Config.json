@@ -107,6 +107,14 @@
         "tooltip": "Message that will be posted if the user doesn't have enough points.\r\n $user = Username\r\n $points = Current user points\r\n $currency = Name of Currency\r\n $cost = Cost to use the command",
         "group": "Response Messages"
     },
+    "openBlackList": {
+        "type": "button",
+        "label": "Open 'BlackList' file",
+        "tooltip": "Opens the 'BlackList.txt' for this script.\r\n Input all blacklisted words, one word per line.",
+        "function": "OpenBlackList",
+        "wsevent": "",
+        "group": ""
+    },
     "openReadMe": {
         "type": "button",
         "label": "Open 'Readme Me' file",
