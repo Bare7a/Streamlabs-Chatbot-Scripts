@@ -68,6 +68,7 @@
   - Customisable permission for using the command
   - Customisable cooldown / user cooldown timers 
   - Customisable response messages
+  - Customisable black list
 
 ## [Slots Minigame](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Bare7a/Streamlabs-Chatbot-Scripts/tree/master/Slots)
   - Enable/Disable using the command when the stream is offline
