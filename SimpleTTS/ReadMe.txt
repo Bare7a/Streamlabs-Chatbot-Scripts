@@ -12,4 +12,5 @@
  - Customisable permission for using the command
  - Customisable cooldown / user cooldown timers 
  - Customisable response messages
+ - Customisable black list
 ===============================================================================
