@@ -59,7 +59,7 @@ def Init():
 		voiceParams = voiceParams + " 1 "	
 
 def Execute(data):
-	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])) and not any(word in message.replace(' ', '').upper() for word in blackList):
+	if data.IsChatMessage() and data.GetParam(0).lower() == settings["command"] and Parent.HasPermission(data.User, settings["permission"], "") and ((settings["liveOnly"] and Parent.IsLive()) or (not settings["liveOnly"])) and not any(word in data.Message.replace(' ', '').upper() for word in blackList):
 		outputMessage = ""
 		userId = data.User			
 		username = data.UserName
@@ -107,6 +107,11 @@ def ReloadSettings(jsonData):
 
 def OpenReadMe():
 	location = os.path.join(os.path.dirname(__file__), "README.txt")
+	os.startfile(location)
+	return
+
+def OpenBlackList():
+	location = os.path.join(os.path.dirname(__file__), "BlackList.txt")
 	os.startfile(location)
 	return
 
