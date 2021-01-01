@@ -9,7 +9,7 @@ ScriptName = "Simple TTS"
 Website = "http://www.github.com/Bare7a/Streamlabs-Chatbot-Scripts"
 Description = "Simple TTS for Streamlabs Bot"
 Creator = "Bare7a"
-Version = "1.3.0"
+Version = "1.3.2"
 
 configFile = "config.json"
 blackListFile = "BlackList.txt"
