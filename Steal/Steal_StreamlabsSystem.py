@@ -49,7 +49,8 @@ def Execute(data):
 		userId = data.User			
 		username = data.UserName
 		points = Parent.GetPoints(userId)
-		victim = Parent.GetDisplayName("targetid")
+		victimId = Parent.GetDisplayName("targetid")
+		victim = Parent.GetDisplayName(victimId)
 
 		if points < settings["costs"]:
 			outputMessage = settings["responseNotEnoughPoints"]
@@ -94,6 +95,7 @@ def Execute(data):
 
 				outputMessage = settings["responseLost"]
 
+			outputMessage = outputMessage.replace("$victim", Parent.GetDisplayName("$targetid"))
 			outputMessage = outputMessage.replace("$victim", victim)
 			outputMessage = outputMessage.replace("$reward", str(reward))
 
