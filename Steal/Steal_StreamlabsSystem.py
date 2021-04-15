@@ -38,8 +38,8 @@ def Init():
 			"onCooldown": "$user, $command is still on cooldown for $cd minutes!",
 			"userCooldown": 300,
 			"onUserCooldown": "$user $command is still on user cooldown for $cd minutes!",
-			"responseWon": "$dummy $user stole $reward $currency from $victim",
-			"responseLost": "$dummy user couldn't steal any $currency from $victim and lost $reward $currency",
+			"responseWon": "$user stole $reward $currency from $victim",
+			"responseLost": "$user couldn't steal any $currency from $victim and lost $reward $currency",
 			"responseNotEnoughPoints": "$user you need $cost $currency to steal from $msg."
 		}
 
@@ -49,7 +49,7 @@ def Execute(data):
 		userId = data.User			
 		username = data.UserName
 		points = Parent.GetPoints(userId)
-		victimId = data.TargetName
+		victimId = data.Target
 		victim = Parent.GetDisplayName(victimId)
 
 		if points < settings["costs"]:
