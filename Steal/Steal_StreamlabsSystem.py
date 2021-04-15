@@ -109,6 +109,7 @@ def Execute(data):
 		outputMessage = outputMessage.replace("$cost", str(settings["costs"]))
 		outputMessage = outputMessage.replace("$minReward", str(settings["minReward"]))
 		outputMessage = outputMessage.replace("$maxReward", str(settings["maxReward"]))
+		outputMessage = outputMessage.replace("$victim", victim)
 
 		Parent.SendStreamMessage(outputMessage)
 	return
