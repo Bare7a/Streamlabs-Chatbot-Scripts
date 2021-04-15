@@ -49,8 +49,7 @@ def Execute(data):
 		userId = data.User			
 		username = data.UserName
 		points = Parent.GetPoints(userId)
-		victimId = data.Target
-		victim = Parent.GetDisplayName(victimId)
+		victim = Parent.GetDisplayName("targetid")
 
 		if points < settings["costs"]:
 			outputMessage = settings["responseNotEnoughPoints"]
@@ -109,6 +108,7 @@ def Execute(data):
 		outputMessage = outputMessage.replace("$cost", str(settings["costs"]))
 		outputMessage = outputMessage.replace("$minReward", str(settings["minReward"]))
 		outputMessage = outputMessage.replace("$maxReward", str(settings["maxReward"]))
+		outputMessage = outputMessage.replace("$victim", Parent.GetDisplayName("$targetid"))
 		outputMessage = outputMessage.replace("$victim", victim)
 
 		Parent.SendStreamMessage(outputMessage)
