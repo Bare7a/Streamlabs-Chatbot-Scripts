@@ -40,7 +40,7 @@ def Init():
 			"onUserCooldown": "$user $command is still on user cooldown for $cd minutes!",
 			"responseWon": "$user stole $reward $currency from $victim",
 			"responseLost": "$user couldn't steal any $currency from $victim and lost $reward $currency",
-			"responseNotEnoughPoints": "$user you need $cost $currency to steal."
+			"responseNotEnoughPoints": "$user you need $cost $currency to steal from $msg."
 		}
 
 def Execute(data):
@@ -49,6 +49,8 @@ def Execute(data):
 		userId = data.User			
 		username = data.UserName
 		points = Parent.GetPoints(userId)
+		victimId = Parent.GetDisplayName("targetid")
+		victim = Parent.GetDisplayName(victimId)
 
 		if points < settings["costs"]:
 			outputMessage = settings["responseNotEnoughPoints"]
@@ -71,7 +73,7 @@ def Execute(data):
 			userList = Parent.GetViewerList()
 
 			while True:
-				victimId = userList[Parent.GetRandom(0, len(userList))]
+				victim = Parent.GetDisplayName(victimId)
 
 				if victimId != userId:
 					break
@@ -93,6 +95,7 @@ def Execute(data):
 
 				outputMessage = settings["responseLost"]
 
+			outputMessage = outputMessage.replace("$victim", Parent.GetDisplayName("$targetid"))
 			outputMessage = outputMessage.replace("$victim", victim)
 			outputMessage = outputMessage.replace("$reward", str(reward))
 
@@ -107,6 +110,8 @@ def Execute(data):
 		outputMessage = outputMessage.replace("$cost", str(settings["costs"]))
 		outputMessage = outputMessage.replace("$minReward", str(settings["minReward"]))
 		outputMessage = outputMessage.replace("$maxReward", str(settings["maxReward"]))
+		outputMessage = outputMessage.replace("$victim", Parent.GetDisplayName("$targetid"))
+		outputMessage = outputMessage.replace("$victim", victim)
 
 		Parent.SendStreamMessage(outputMessage)
 	return
