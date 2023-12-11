@@ -30,6 +30,13 @@
         "tooltip": "Set the default cost for this command.",
         "group": "General"
     },
+    "winProbability": {
+        "type": "numberbox",
+        "value": 30,
+        "label": "Percentage Win Rate",
+        "tooltip": "Set the default cost for this command.",
+        "group": "General"
+    },
     "minReward": {
         "type": "numberbox",
         "value": 10,

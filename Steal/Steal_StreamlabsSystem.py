@@ -30,6 +30,7 @@ def Init():
 			"command": "!steal",
 			"permission": "Everyone",
 			"cost": 5,
+			"winProbability":30,
 			"minReward": 10,
 			"maxReward": 20,
 			"useCooldown": True,
@@ -67,7 +68,9 @@ def Execute(data):
 				outputMessage = ""
 		else:
 			Parent.RemovePoints(userId, username, settings["costs"])
-			isStealing = Parent.GetRandom(0, 2)
+			currentChance = Parent.GetRandom(0, 100)
+			winProbablity = settings["winProbability"]
+			lossProbability = 100 - winProbablity
 			userList = Parent.GetViewerList()
 
 			while True:
@@ -82,7 +85,7 @@ def Execute(data):
 			if reward > points:
 				reward = points	
 
-			if isStealing == 1:
+			if currentChance>lossProbability:
 				Parent.AddPoints(userId, username, reward)
 				Parent.RemovePoints(victimId, victim, reward)
 
